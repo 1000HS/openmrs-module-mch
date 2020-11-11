@@ -1,0 +1,246 @@
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+
+<script type="text/javascript">
+$j("#completeMedicalHistory").attr("src", "http://localhost:8080/openmrs/module/htmlformentry/htmlFormEntry.form?personId=40940&patientId=40940&returnUrl=&formId=78");
+</script>
+
+
+
+<div id="ANC">
+		<table class="section-table">
+			<tr>
+                <td colspan="7" style="background-color:#5c9ccc;color:white;"><center><b>ANC Summary</b></center></td>
+                </tr>
+                <tr>
+                <td colspan="2" style="background-color:#e4f1fc;" width="25%"><b>Medical Info</b> </td>
+                <td colspan="2"  width="25%"><b>Obstetric history</b></td>
+                <td style="background-color:#e4f1fc;"  width="25%"><b>Obstetric history</b></td>
+                <td colspan="2"  width="25%"><b>Abnomalities & Positivity</b></td>
+                </tr>
+                <tr>
+                <td style="background-color:#e4f1fc;">Last Menstrual period LMP</td>
+                <td style="background-color:#e4f1fc;"><span class="value-date"><openmrs:formatDate date="${formData.lastMenstrualPeriodDate}" format="${FormatDate_General}"/></span></td>
+                <td>GRAVIDITY</td>
+                <td>${formData.gravidity}</td>
+                <td rowspan="4" style="background-color:#e4f1fc;">
+                <c:forEach var="conc" items="${formData.allObsetricHistory}">
+                    <c:out value="${conc.name.name}"/> <br /><br />
+                </c:forEach>
+                </td>
+                <td>CURRENT PROBLEMS</td>
+                <td>
+                <c:forEach var="conc" items="${formData.allLastCurrentProblems}">
+                            |<font color="red"><c:out value="${conc.name.name}"/></font>
+                </c:forEach>
+                </td>
+                </tr>
+                <tr>
+                    <td style="background-color:#e4f1fc;">Expected Date of Delivery EDD</td>
+                    <td style="background-color:#e4f1fc;"><span class="value-date"><openmrs:formatDate date="${formData.expectedDueDate}" format="${FormatDate_General}"/></span></td>
+                    <td>Parity</td>
+                    <td>${formData.parity}</td>
+                    <td>GENERAL EXAMINATION</td>
+                    <td>
+                    <c:if test="${formData.lastTemperature < 36 || formData.lastTemperature > 38}">
+                                |<font color="red">Abnormal Temperature</font>
+                    </c:if>
+                    <c:if test="${formData.lastSBP < 90 && formData.lastDBP < 60}">
+                                       |<font color="red">Hypotension</font>
+                    </c:if>
+                    <c:if test="${formData.lastSBP >= 120 && formData.lastSBP <= 139 && formData.lastDBP >= 80 && formData.lastDBP <= 89}">
+                                       |<font color="red">Moderate hypertension</font>
+                    </c:if>
+                    <c:if test="${formData.lastSBP >= 140 && formData.lastDBP >= 90}">
+                                       |<font color="red">Severe hypertension</font>
+                    </c:if>
+                    <c:if test="${formData.lastPulse < 80 || formData.lastPulse > 100}">
+                                      |<font color="red">Abnormal Pulse</font>
+                    </c:if>
+
+                    </td>
+                    </tr>
+                    <tr>
+                    <td style="background-color:#e4f1fc;">Duration of pregnancy (week)</td>
+                    <td style="background-color:#e4f1fc;">${formData.durationOfPregnancy}</td>
+                    <td>Abortions</td>
+                    <td>${formData.numberOfAbortions}</td>
+                    <td>Danger signs</td>
+                    <td>
+                     <c:forEach var="conc" items="${formData.allLastDangerSignValues}">
+                                |<font color="red"><c:out value="${conc.name.name}"/></font>
+                     </c:forEach>
+                    </td>
+                 </tr>
+                <tr>
+                <td style="background-color:#e4f1fc;">Accompanied by partner</td>
+                <td style="background-color:#e4f1fc;">${formData.patientArrivedWithPartner.name.name}</td>
+                <td>Caesarian sections</td>
+                <td>${formData.numberOfCesareanSection}</td>
+                <td>PREGNANCY EXAMINATION </td>
+                <td>
+                <c:if test="${formData.lastGenitalExamination.conceptId == formData.abnormalConcept.conceptId}">
+                          |<font color="red">Abnormal Genital examination</font>
+                 </c:if>
+                 <c:if test="${formData.lastIsBabyMoving.conceptId == formData.noConcept.conceptId}">
+                              |<font color="red">Baby Not Moving</font>
+                 </c:if>
+                 <c:if test="${formData.lastFundalHeightMatchGA.conceptId == formData.noConcept.conceptId}">
+                               |<font color="red">Fundal Height Not Matching gestational age</font>
+                  </c:if>
+                </td>
+                </tr>
+
+
+                <tr>
+                    <td style="background-color:#e4f1fc;">Vaccination Records for Mother</td>
+                    <td style="background-color:#e4f1fc;">${formData.lastTetanusGiven.name.name}</td>
+                    <td></td>
+                    <td></td>
+                    <td style="background-color:#e4f1fc;"></td>
+                    <td>ABDOMINAL ECHOGRAPHIE</td>
+                    <td>
+                    <c:if test="${formData.lastFetalPosition.conceptId != formData.normalConcept.conceptId}">
+                             |<font color="red">Fetal position is ${formData.lastFetalPosition.name.name}</font>
+                    </c:if>
+                     <c:if test="${formData.lastFetalHeart.conceptId == formData.abnormalConcept.conceptId}">
+                            |<font color="red">Abnormal  Fetal Heart</font>
+                     </c:if>
+                     <c:if test="${formData.lastRespirationMovements.conceptId == formData.abnormalConcept.conceptId}">
+                             |<font color="red">Abnormal  Respiration Movements</font>
+                     </c:if>
+
+                     <c:if test="${formData.lastRespirationMovements.conceptId == formData.abnormalConcept.conceptId}">
+                             |<font color="red">Abnormal  Respiration Movements</font>
+                     </c:if>
+                      <c:if test="${formData.lastFetalTone.conceptId == formData.abnormalConcept.conceptId}">
+                              |<font color="red">Abnormal  Fetal Tone</font>
+                      </c:if>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td style="background-color:#e4f1fc;">MUAC</td>
+                    <td style="background-color:#e4f1fc;">${formData.lastMUACOfBaby}</td>
+                    <td></td>
+                    <td></td>
+                    <td style="background-color:#e4f1fc;"></td>
+                    <td>OTHER COMPLAINTS</td>
+                    <td>
+                    <c:if test="${formData.lastLungs.conceptId == formData.abnormalConcept.conceptId}">
+                             |<font color="red">Abnormal Lungs</font>
+                    </c:if>
+                     <c:if test="${formData.lastHeart.conceptId == formData.abnormalConcept.conceptId}">
+                            |<font color="red">, Abnormal Heart</font>
+                     </c:if>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="background-color:#e4f1fc;">HIV TEST RESULT</td>
+                    <td style="background-color:#e4f1fc;">${formData.lastResultofHIVTest.name.name}</td>
+                    <td></td>
+                    <td></td>
+                    <td style="background-color:#e4f1fc;"></td>
+                    <td>RPR Result</td>
+                    <td>
+                    <c:if test="${formData.lastRPRResult.conceptId == formData.positiveConcept.conceptId}">
+                             <font color="red">${formData.lastRPRResult.name.name}</font>
+                    </c:if>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="background-color:#e4f1fc;">PARTNER HIV TEST RESULT</td>
+                    <td style="background-color:#e4f1fc;">${formData.lastResultofHIVTestOfPartener.name.name}</td>
+                    <td></td>
+                    <td></td>
+                    <td style="background-color:#e4f1fc;"></td>
+                    <td>HB Testing</td>
+                    <td>
+                    <c:if test="${formData.lastHB < 12 || formData.lastHB > 15.5}">
+                                       <font color="red">Abnormal Hemoglobin</font>
+                    </c:if>
+                    </td>
+                </tr>
+               <tr>
+                    <td style="background-color:#e4f1fc;"></td>
+                    <td style="background-color:#e4f1fc;"></td>
+                    <td></td>
+                    <td></td>
+                    <td style="background-color:#e4f1fc;"></td>
+                    <td>HIV</td>
+                    <td>
+                    <c:if test="${formData.lastHIVResult.conceptId == formData.positiveConcept.conceptId}">
+                             <font color="red">${formData.lastHIVResult.name.name}</font>
+                    </c:if>
+                    </td>
+                </tr>
+                <tr>
+                <td colspan="7">
+
+                 <fieldset style="background-color:#e4f1fc;">
+                              <legend style="font-size: 20px;"><font color="#5c9ccc" size="20"><b>What Form do you like to fill?</b></font></legend>
+                 <openmrs:globalProperty var="EnrolmentFormId" key="mch.Form_ANC_Enrolment"  />
+                 <openmrs:globalProperty var="RoutineFormId" key="mch.Form_ANC_Routine"  />
+                 <openmrs:globalProperty var="EmergencyFormId" key="mch.Form_ANC_Emergency"  />
+                 <openmrs:globalProperty var="ReferralFormId" key="mch.Form_ANC_Referral"  />
+
+                              <button onClick="showEntryPopup('Enrolment Form', ${EnrolmentFormId}); return false;" style="font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Enrolment &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                              <button onClick="showEntryPopup('Routine Form', ${RoutineFormId}); return false;" style="font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Followup &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                              <button onClick="showEntryPopup('Emergency Form', ${EmergencyFormId}); return false;" style="font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Emergency &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                            <%--  <button onClick="showEntryPopup('Referral Form', ${ReferralFormId}); return false;" style="font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referral &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button> --%>
+                            </fieldset>
+
+                </td>
+
+                </tr>
+                <tr>
+                <td colspan="7">
+
+                 <openmrs:globalProperty var="maxEncs" key="dashboard.encounters.maximumNumberToShow" defaultValue="" />
+
+                            <openmrs:portlet url="ancPatientEncounters" id="ancPatientEncountersID" moduleId="mch" patientId="${patient.patientId}" parameters="num=${maxEncs}|showPagination=true" />
+
+                 <openmrs:globalProperty var="ancFlowsheetId" key="mch.Form_ANC_FlowSheet"  />
+                 <button onClick="showEntryPopup('Emergency Form', ${ancFlowsheetId}); return false;" style="font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Check Complete Medical History &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+
+
+                </td>
+
+                </tr>
+                <tr>
+                <td colspan="7">
+               <!-- <iframe id="completeMedicalHistory" width="100%" height="100%" marginWidth="600" marginHeight="0" frameBorder="0" scrolling="auto" src="http://localhost:8080/openmrs/module/htmlformentry/htmlFormEntry.form?personId=40940&patientId=40940&returnUrl=&formId=78"></iframe> -->
+                </td>
+                </tr>
+               <!--  <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                </tr>
+                <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                </tr>
+                <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                </tr> -->
+                </table>
+
+
+
+
+           </div>

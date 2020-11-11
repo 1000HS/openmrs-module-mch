@@ -1,0 +1,123 @@
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<div id="INTRAPARTUM">
+		<table class="section-table">
+        <tr>
+        <td colspan="12" style="background-color:#5c9ccc;color:white;">Woman History Summary</td>
+        </tr>
+        <tr>
+        <td colspan="3" style="background-color:#e4f1fc;"><center><b>Baby</b></center></td>
+        <td colspan="9" style="background-color:#e4f1fc;"><center><b>Mother</b></center></td>
+        </tr>
+        <tr>
+        <td style="background-color:#e4f1fc;">Date/Time</td>
+        <td>Heart rate</td>
+        <td>Baby presentation</td>
+        <td style="background-color:#e4f1fc;">Date/time</td>
+        <td>Poche (Liquide amniotique)</td>
+        <td>Abd. hauteur uterine</td>
+        <td>Number of contractions</td>
+        <td>Ocytocin</td>
+        <td>Evaluation du bassin</td>
+        <td>T.V. Dilatation</td>
+        <td>triage</td>
+        <td>drugs administration</td>
+        </tr>
+
+        <c:forEach var="encounter" items="${formData.intrapartumFollowUpEnconters}">
+        <tr>
+                <td style="background-color:#e4f1fc;"><openmrs:formatDate date="${encounter.key}" format="${FormatDate_General}"/></td>
+                  <c:set var="heartRate" value="" />
+                  <c:set var="babyPresentation" value="" />
+                  <c:set var="poche" value="" />
+                    <c:set var="hauteurUterine" value="" />
+                    <c:set var="numberOfContractions" value="" />
+                    <c:set var="ocytocin" value="" />
+                    <c:set var="evaluationDuBassin" value="" />
+                    <c:set var="tvDilatation" value="" />
+                    <c:set var="triage" value="" />
+                    <c:set var="drugAdmin" value="" />
+
+
+                  <c:forEach var="ob" items="${encounter.value.obs}">
+                            <c:if test="${ob.concept.conceptId == 5087}">
+                                <c:set var="heartRate" value="${ob.valueNumeric}" />
+                            </c:if>
+                            <c:if test="${ob.concept.conceptId == 8149}">
+                                <c:set var="babyPresentation" value="${ob.valueCoded.name.name}" />
+                            </c:if>
+                            <c:if test="${ob.concept.conceptId == 10126}">
+                                <c:set var="poche" value="${ob.valueCoded.name.name}" />
+                            </c:if>
+                            <c:if test="${ob.concept.conceptId == 8145}">
+                                <c:set var="hauteurUterine" value="${ob.valueNumeric}" />
+                            </c:if>
+                            <c:if test="${ob.concept.conceptId == 10049}">
+                                <c:set var="numberOfContractions" value="${ob.valueNumeric}" />
+                            </c:if>
+                            <c:if test="${ob.concept.conceptId == 105470}">
+                                <c:set var="ocytocin" value="${ob.valueNumeric}" />
+                            </c:if>
+                            <c:if test="${ob.concept.conceptId == 10057}">
+                                <c:set var="evaluationDuBassin" value="${ob.valueCoded.name.name}" />
+                            </c:if>
+                            <c:if test="${ob.concept.conceptId == 10109}">
+                                <c:set var="tvDilatation" value="${ob.valueNumeric}" />
+                            </c:if>
+                            <c:if test="${ob.concept.conceptId == 106888}">
+                                <c:set var="triage" value="${ob.valueCoded.name.name}" />
+                            </c:if>
+                            <c:if test="${ob.concept.conceptId == 3193}">
+                                <c:set var="drugAdmin" value="${ob.valueText}" />
+                            </c:if>
+
+                 </c:forEach>
+
+
+                 <td>${heartRate}</td>
+                <td>${babyPresentation}</td>
+                <td style="background-color:#e4f1fc;"><openmrs:formatDate date="${encounter.key}" format="${FormatDate_General}"/></td>
+                <td>${poche}</td>
+                <td>${hauteurUterine}</td>
+                <td>${numberOfContractions}</td>
+                <td>${ocytocin}</td>
+                <td>${evaluationDuBassin}</td>
+                <td>${tvDilatation}</td>
+                <td>${triage}</td>
+                <td>${drugAdmin}</td>
+        </tr>
+        </c:forEach>
+
+        <tr>
+                       <td colspan="12">
+
+                         <fieldset style="background-color:#e4f1fc;">
+                                      <legend style="font-size: 20px;"><font color="#5c9ccc" size="20"><b>What Form do you like to fill?</b></font></legend>
+
+                            <openmrs:globalProperty var="intraWomanInLabourFormId" key="mch.Form_INTRAPARTUM_Assessment_and_care_of_woman_in_labour"  />
+                            <openmrs:globalProperty var="intraFollowUpWomanInLabourFormId" key="mch.Form_INTRAPARTUM_FollowUp_woman_in_labour"  />
+                            <openmrs:globalProperty var="intraDeliveryAndNewBornRegFormId" key="mch.Form_INTRAPARTUM_Delivery_outcome_and_New_Born_Registration"  />
+
+                            <button onClick="showEntryPopup('Assessment and care of woman in labour', ${intraWomanInLabourFormId}); return false;"  style="font-size: 16px;">Assessment and care of woman in labour</button>
+                            <button onClick="showEntryPopup('Follow up  of woman in labour', ${intraFollowUpWomanInLabourFormId}); return false;"  style="font-size: 16px;">Follow up  of woman in labour</button>
+                            <button onClick="showEntryPopup('Delivery outcome and New Born Registration', ${intraDeliveryAndNewBornRegFormId}); return false;"  style="font-size: 16px;">Delivery outcome and New Born Registration</button>
+                         </fieldset>
+
+                        </td>
+
+                        </tr>
+                        <tr>
+                        <td colspan="12">
+
+                         <openmrs:globalProperty var="maxEncs" key="dashboard.encounters.maximumNumberToShow" defaultValue="" />
+
+                                    <openmrs:portlet url="ancPatientEncounters" id="ancPatientEncountersID" moduleId="mch" patientId="${patient.patientId}" parameters="num=${maxEncs}|showPagination=true" />
+
+
+                        </td>
+
+                        </tr>
+
+                        </table>
+
+
+           </div>

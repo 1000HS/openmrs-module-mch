@@ -1,0 +1,112 @@
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<div id="FP">
+		<table class="section-table">
+			<tr>
+                <td colspan="7" style="background-color:#5c9ccc;color:white;"><center><b>FP Summary</b></center></td>
+                </tr>
+                <tr>
+                <td colspan="2" style="background-color:#e4f1fc;"><b>Family Planning History</b> </td>
+                <td colspan="2"><b>Family planning method history</b></td>
+                <td style="background-color:#e4f1fc;"><b>ANNAMNESIS</b></td>
+                <td colspan="2"><b>Abnomalities&Positivity</b></td>
+                </tr>
+                <tr>
+                <td style="background-color:#e4f1fc;">Children in life</td>
+                <td style="background-color:#e4f1fc;"></td>
+                <td>Injectables(I)</td>
+                <td></td>
+                <td rowspan="7" style="background-color:#e4f1fc;"></td>
+                <td>General exam</td>
+                <td></td>
+                </tr>
+                <tr>
+                <td style="background-color:#e4f1fc;">Desired number of children</td>
+                <td style="background-color:#e4f1fc;"></td>
+                <td></td>
+                <td></td>
+                <td style="background-color:#e4f1fc;"></td>
+                <td>Gynecological exam</td>
+                <td></td>
+                </tr>
+                <tr>
+                <td style="background-color:#e4f1fc;">Date of last delivery</td>
+                <td style="background-color:#e4f1fc;"></td>
+                <td></td>
+                <td></td>
+                <td style="background-color:#e4f1fc;"></td>
+                <td></td>
+                <td></td>
+                </tr>
+                <tr>
+                <td style="background-color:#e4f1fc;">Date of last abortion</td>
+                <td style="background-color:#e4f1fc;"></td>
+                <td></td>
+                <td></td>
+                <td style="background-color:#e4f1fc;"></td>
+                <td></td>
+                <td></td>
+                </tr>
+                <tr>
+                <td style="background-color:#e4f1fc;">Number of children died</td>
+                <td style="background-color:#e4f1fc;"></td>
+                <td></td>
+                <td></td>
+                <td style="background-color:#e4f1fc;"></td>
+                <td></td>
+                <td></td>
+                </tr>
+                <tr>
+                <td style="background-color:#e4f1fc;">FP method previously</td>
+                <td style="background-color:#e4f1fc;"></td>
+                <td></td>
+                <td></td>
+                <td style="background-color:#e4f1fc;"></td>
+                <td></td>
+                <td></td>
+                </tr>
+                <tr>
+                <td style="background-color:#e4f1fc;">HIV status</td>
+                <td style="background-color:#e4f1fc;"></td>
+                <td></td>
+                <td></td>
+                <td style="background-color:#e4f1fc;"></td>
+                <td></td>
+                <td></td>
+                </tr>
+                <tr>
+                <td colspan="7">
+
+                 <fieldset>
+                              <legend>What Form do you like to fill?</legend>
+
+
+                              <openmrs:globalProperty var="FPEnrolment" key="mch.FP_Enrolment"  />
+                              <openmrs:globalProperty var="FPMonitoringsheetandexamsfollowup" key="mch.FP_Monitoring_sheet_and_exams_followup"  />
+
+
+                               <button onClick="showEntryPopup('FP Enrolment Form', ${FPEnrolment}); return false;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Enrolment &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                               <button onClick="showEntryPopup('FP Monitoring sheet and exams followup Form', ${FPMonitoringsheetandexamsfollowup}); return false;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Monitoring sheet and exams followup &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+
+                            </fieldset>
+
+                </td>
+
+                </tr>
+                <tr>
+                <td colspan="7">
+
+                 <openmrs:globalProperty var="maxEncs" key="dashboard.encounters.maximumNumberToShow" defaultValue="" />
+
+                            <openmrs:portlet url="ancPatientEncounters" id="ancPatientEncountersID" moduleId="mch" patientId="${patient.patientId}" parameters="num=${maxEncs}|showPagination=true" />
+
+
+                </td>
+
+                </tr>
+
+                </table>
+
+
+
+
+           </div>

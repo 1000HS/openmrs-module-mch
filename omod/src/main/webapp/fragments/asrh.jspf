@@ -1,0 +1,90 @@
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<div id="ASRH">
+		<table class="section-table">
+			<tr>
+                <td colspan="2" style="background-color:#5c9ccc;color:white;"><center><b>ASRH Summary</b></center></td>
+                </tr>
+                <tr>
+                <td colspan="2"><b>Adolescent Hystory</b> </td>
+                </tr>
+                <tr>
+                <td><Malnutrition and Anemia/td>
+                <td></td>
+                </tr>
+                <tr>
+                <td>Nutrition status</td>
+                <td></td>
+                </tr>
+                <tr>
+                <td>HIV INFECTION</td>
+                <td></td>
+                </tr>
+                <tr>
+                <td>TB</td>
+                <td></td>
+                </tr>
+                <tr>
+                <td>Immunization status</td>
+                <td></td>
+                </tr>
+                <tr>
+                <td>Drugs</td>
+                <td></td>
+                </tr>
+                <tr>
+                <td>Menstrual history</td>
+                <td></td>
+                </tr>
+                <tr>
+                <td>Pain during the periods</td>
+                <td></td>
+                </tr>
+                <tr>
+                <td>Excessive bleeding during the periods</td>
+                <td></td>
+                </tr>
+                <tr>
+                <td>Regularity of the periods</td>
+                <td></td>
+                </tr>
+                <tr>
+                <td>Sexual activity</td>
+                <td></td>
+                </tr>
+                <tr>
+                <td>STI</td>
+                <td></td>
+                </tr>
+                <tr>
+                <td colspan="2">
+
+                 <fieldset>
+                              <legend>What Form do you like to fill?</legend>
+
+                              <openmrs:globalProperty var="ASRHEnrolment" key="mch.ASRH_Enrolment"  />
+
+                              <button onClick="showEntryPopup('Enrolment Form', ${ASRHEnrolment}); return false;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Enrolment &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+
+   </fieldset>
+
+                </td>
+
+                </tr>
+                <tr>
+                <td colspan="2">
+
+                 <openmrs:globalProperty var="maxEncs" key="dashboard.encounters.maximumNumberToShow" defaultValue="" />
+
+                            <openmrs:portlet url="ancPatientEncounters" id="ancPatientEncountersID" moduleId="mch" patientId="${patient.patientId}" parameters="num=${maxEncs}|showPagination=true" />
+
+
+                </td>
+
+                </tr>
+
+                </table>
+
+
+
+
+           </div>

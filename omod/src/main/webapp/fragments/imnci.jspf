@@ -1,0 +1,205 @@
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<div id="IMNCI">
+		<table class="section-table">
+			<tr>
+                <td colspan="6" style="background-color:#5c9ccc;color:white;"><center><b>IMNCI Summary</b></center></td>
+                </tr>
+
+                 <tr>
+                <td colspan="2" style="background-color:#e4f1fc;"><b>IMNCI 0-7 days </b> </td>
+                <td colspan="2"><b>IMNCI 1W-2M</b></td>
+                <td colspan="2" style="background-color:#e4f1fc;"><b>IMNCI 2M-5Y</b></td>
+                </tr>
+                <tr>
+                <td style="background-color:#e4f1fc;">Severe disease and local bacterial infection</td>
+                <td style="background-color:#e4f1fc;"></td>
+                <td>Severe disease and local bacterial infection</td>
+                <td></td>
+                <td style="background-color:#e4f1fc;">Malnutrition and Anemia</td>
+                <td style="background-color:#e4f1fc;"></td>
+                </tr>
+                </tr>
+                <tr>
+                <td style="background-color:#e4f1fc;">Eye infection</td>
+                <td style="background-color:#e4f1fc;"></td>
+                <td>Eye infection</td>
+                <td></td>
+                <td style="background-color:#e4f1fc;">Nutrition status</td>
+                <td style="background-color:#e4f1fc;"></td>
+                </tr>
+                </tr>
+                <tr>
+                <td style="background-color:#e4f1fc;">Neonatal jaundice</td>
+                <td style="background-color:#e4f1fc;"></td>
+                <td>Neonatal jaundice</td>
+                <td></td>
+                <td style="background-color:#e4f1fc;">HIV INFECTION</td>
+                <td style="background-color:#e4f1fc;"></td>
+                </tr>
+                </tr>
+                <tr>
+                <td style="background-color:#e4f1fc;">HIV/AIDS assessment</td>
+                <td style="background-color:#e4f1fc;"></td>
+                <td>HIV/AIDS assessment</td>
+                <td></td>
+                <td style="background-color:#e4f1fc;">TB</td>
+                <td style="background-color:#e4f1fc;"></td>
+                </tr>
+                </tr>
+                <tr>
+                <td style="background-color:#e4f1fc;">Breastfeed</td>
+                <td style="background-color:#e4f1fc;"></td>
+                <td>Breastfeed</td>
+                <td></td>
+                <td style="background-color:#e4f1fc;">Immunization status</td>
+                <td style="background-color:#e4f1fc;"></td>
+                </tr>
+                </tr>
+                <tr>
+                <td style="background-color:#e4f1fc;">Immunization status</td>
+                <td style="background-color:#e4f1fc;"></td>
+                <td>Immunization status</td>
+                <td></td>
+                <td style="background-color:#e4f1fc;">signs of MEASLES</td>
+                <td style="background-color:#e4f1fc;"></td>
+                </tr>
+                </tr>
+                <tr>
+                <td style="background-color:#e4f1fc;">MUAC</td>
+                <td style="background-color:#e4f1fc;"></td>
+                <td>MUAC</td>
+                <td></td>
+                <td style="background-color:#e4f1fc;">Other problems</td>
+                <td style="background-color:#e4f1fc;"></td>
+                </tr>
+                </tr>
+                <tr>
+                <td style="background-color:#e4f1fc;">Weight starting on KMC</td>
+                <td style="background-color:#e4f1fc;"></td>
+                <td>Weight starting on KMC</td>
+                <td></td>
+                <td style="background-color:#e4f1fc;"></td>
+                <td style="background-color:#e4f1fc;"></td>
+                </tr>
+                </tr>
+                <tr>
+                <td style="background-color:#e4f1fc;">APGAR</td>
+                <td style="background-color:#e4f1fc;"></td>
+                <td>APGAR</td>
+                <td></td>
+                <td style="background-color:#e4f1fc;"></td>
+                <td style="background-color:#e4f1fc;"></td>
+                </tr>
+                </tr>
+                <tr>
+                <td style="background-color:#e4f1fc;"></td>
+                <td style="background-color:#e4f1fc;"></td>
+                <td></td>
+                <td></td>
+                <td style="background-color:#e4f1fc;"></td>
+                <td style="background-color:#e4f1fc;"></td>
+                </tr>
+                <!--<tr>
+                    <td style="background-color:#5c9ccc;">Expected Date of Delivery EDD</td>
+                    <td style="background-color:#5c9ccc;"><span class="value-date"><openmrs:formatDate date="${formData.expectedDueDate}" format="${FormatDate_General}"/></span></td>
+                    <td style="background-color:#e4f1fc;">Parity</td>
+                    <td style="background-color:#e4f1fc;">${formData.parity}</td>
+                    <td style="background-color:#e4f1fc;">GENERAL EXAMINATION</td>
+                    <td style="background-color:#e4f1fc;"></td>
+                    </tr>
+                    <tr>
+                    <td style="background-color:#5c9ccc;">Duration of pregnancy (week)</td>
+                    <td style="background-color:#5c9ccc;">${formData.durationOfPregnancy}</td>
+                    <td style="background-color:#e4f1fc;">Abortions</td>
+                    <td style="background-color:#e4f1fc;">${formData.numberOfAbortions}</td>
+                    <td  style="background-color:#e4f1fc;">Danger signs</td>
+                    <td  style="background-color:#e4f1fc;">
+                     <c:forEach var="conc" items="${formData.allLastDangerSignValues}">
+                                |<c:out value="${conc.name.name}"/>
+                     </c:forEach>
+                    </td>
+                 </tr>
+                <tr>
+                <td style="background-color:#5c9ccc;">Accompanied by partner</td>
+                <td style="background-color:#5c9ccc;">${formData.patientArrivedWithPartner.name.name}</td>
+                <td style="background-color:#e4f1fc;">Caesarian sections</td>
+                <td style="background-color:#e4f1fc;">${formData.numberOfCesareanSection}</td>
+                <td></td>
+                <td></td>
+                </tr>
+                -->
+                <tr>
+                <td colspan="6">
+
+                 <fieldset>
+                              <legend>What Form do you like to fill?</legend>
+
+                              <openmrs:globalProperty var="IMNCI07DayFormId" key="mch.IMNCI_0-7_Day"  />
+                              <openmrs:globalProperty var="IMNCI1W2MFormId" key="mch.IMNCI_1W-2M"  />
+                              <openmrs:globalProperty var="IMNCI2M5YFormId" key="mch.IMNCI_2M-5Y"  />
+                              <openmrs:globalProperty var="IMNCIFolloUpFormId" key="mch.IMNCI_FollowUP"  />
+
+
+                            <button onClick="showEntryPopup('IMNCI 0-7 Day Examination Form', ${IMNCI07DayFormId}); return false;" style="font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IMNCI_0-7_Day &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                            <button onClick="showEntryPopup('IMNCI 1W-2M Examination Form', ${IMNCI1W2MFormId}); return false;" style="font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IMNCI_1W-2M &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                            <button onClick="showEntryPopup('IMNCI 2M-5Y Examination Form', ${IMNCI2M5YFormId}); return false;" style="font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IMNCI_2M-5Y &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                            <button onClick="showEntryPopup('IMNCI FollowUp Form', ${IMNCIFolloUpFormId}); return false;" style="font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IMNCI Follow-Up &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+
+                            </fieldset>
+
+                </td>
+
+                </tr>
+                <tr>
+                <td colspan="7">
+
+                 <openmrs:globalProperty var="maxEncs" key="dashboard.encounters.maximumNumberToShow" defaultValue="" />
+
+                            <openmrs:portlet url="ancPatientEncounters" id="ancPatientEncountersID" moduleId="mch" patientId="${patient.patientId}" parameters="num=${maxEncs}|showPagination=true" />
+
+
+                </td>
+
+                </tr>
+                <!-- <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                </tr>
+                <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                </tr>
+                <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                </tr>
+                <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                </tr> -->
+                </table>
+
+
+
+
+           </div>

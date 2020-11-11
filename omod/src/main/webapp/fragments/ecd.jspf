@@ -1,0 +1,129 @@
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<div id="ECD">
+		<table class="section-table">
+			<tr>
+                <td colspan="7" style="background-color:#5c9ccc;color:white;"><center><b>ECD Summary</b></center></td>
+                </tr>
+                 <!--
+                <tr>
+                <td colspan="2" style="background-color:#5c9ccc;"><b>Medical dates</b> </td>
+                <td colspan="2" style="background-color:#e4f1fc;"><b>Obstetric history</b></td>
+                <td style="background-color:#5c9ccc;"><b>Obstetric history</b></td>
+                <td colspan="2" style="background-color:#e4f1fc;"><b>Abnomalities&Positivity</b></td>
+                </tr>
+                <tr>
+                <td style="background-color:#5c9ccc;">Last Menstrual period LMP</td>
+                <td style="background-color:#5c9ccc;"><span class="value-date"><openmrs:formatDate date="${formData.lastMenstrualPeriodDate}" format="${FormatDate_General}"/></span></td>
+                <td style="background-color:#e4f1fc;">GRAVIDITY</td>
+                <td style="background-color:#e4f1fc;">${formData.gravidity}</td>
+                <td rowspan="4" style="background-color:#5c9ccc;">
+                <c:forEach var="conc" items="${formData.allObsetricHistory}">
+                    <c:out value="${conc.name.name}"/> <br /><br />
+                </c:forEach>
+                </td>
+                <td style="background-color:#e4f1fc;">CURRENT PROBLEMS</td>
+                <td style="background-color:#e4f1fc;">
+                <c:forEach var="conc" items="${formData.allLastCurrentProblems}">
+                            |<c:out value="${conc.name.name}"/>
+                     </c:forEach>
+                </td>
+                </tr>
+                <tr>
+                    <td style="background-color:#5c9ccc;">Expected Date of Delivery EDD</td>
+                    <td style="background-color:#5c9ccc;"><span class="value-date"><openmrs:formatDate date="${formData.expectedDueDate}" format="${FormatDate_General}"/></span></td>
+                    <td style="background-color:#e4f1fc;">Parity</td>
+                    <td style="background-color:#e4f1fc;">${formData.parity}</td>
+                    <td style="background-color:#e4f1fc;">GENERAL EXAMINATION</td>
+                    <td style="background-color:#e4f1fc;"></td>
+                    </tr>
+                    <tr>
+                    <td style="background-color:#5c9ccc;">Duration of pregnancy (week)</td>
+                    <td style="background-color:#5c9ccc;">${formData.durationOfPregnancy}</td>
+                    <td style="background-color:#e4f1fc;">Abortions</td>
+                    <td style="background-color:#e4f1fc;">${formData.numberOfAbortions}</td>
+                    <td  style="background-color:#e4f1fc;">Danger signs</td>
+                    <td  style="background-color:#e4f1fc;">
+                     <c:forEach var="conc" items="${formData.allLastDangerSignValues}">
+                                |<c:out value="${conc.name.name}"/>
+                     </c:forEach>
+                    </td>
+                 </tr>
+                <tr>
+                <td style="background-color:#5c9ccc;">Accompanied by partner</td>
+                <td style="background-color:#5c9ccc;">${formData.patientArrivedWithPartner.name.name}</td>
+                <td style="background-color:#e4f1fc;">Caesarian sections</td>
+                <td style="background-color:#e4f1fc;">${formData.numberOfCesareanSection}</td>
+                <td></td>
+                <td></td>
+                </tr>
+                -->
+                <tr>
+                <td colspan="7">
+
+                 <fieldset>
+                              <legend>What Form do you like to fill?</legend>
+
+                              <openmrs:globalProperty var="ECDEnrolmentFormId" key="mch.ECD_Enrolment"  />
+                              <openmrs:globalProperty var="ECDFollowUPFormId" key="mch.ECD_FollowUP"  />
+
+                             <button onClick="showEntryPopup('ECD Enrolemt Form', ${ECDEnrolmentFormId}); return false;" style="font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ECD Enrolment &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                             <button onClick="showEntryPopup('ECD Followup Form', ${ECDFollowUPFormId}); return false;" style="font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ECD FollowUP &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+
+                            </fieldset>
+
+                </td>
+
+                </tr>
+                <tr>
+                <td colspan="7">
+
+                 <openmrs:globalProperty var="maxEncs" key="dashboard.encounters.maximumNumberToShow" defaultValue="" />
+
+                            <openmrs:portlet url="ancPatientEncounters" id="ancPatientEncountersID" moduleId="mch" patientId="${patient.patientId}" parameters="num=${maxEncs}|showPagination=true" />
+
+
+                </td>
+
+                </tr>
+                <!-- <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                </tr>
+                <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                </tr>
+                <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                </tr>
+                <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                </tr> -->
+                </table>
+
+
+
+
+           </div>

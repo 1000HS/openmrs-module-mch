@@ -1,0 +1,141 @@
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<div id="GBV">
+		<table class="section-table">
+			<tr>
+                <td colspan="4" style="background-color:#5c9ccc;color:white;"><center><b>GBV Summary</b></center></td>
+                </tr>
+
+                <tr>
+                <td colspan="2"><b>Signs</b> </td>
+                <td colspan="2" style="background-color:#e4f1fc;"><b>Abnomalities and postive signs/results</b></td>
+                </tr>
+                <tr>
+                <td>Gynaecological and obstretical history ( >20 years )</td>
+                <td></td>
+                <td style="background-color:#e4f1fc;">both hands with injuries</td>
+                <td style="background-color:#e4f1fc;"></td>
+                </tr>
+                <tr>
+                <td>Sexual activity:</td>
+                <td></td>
+                <td style="background-color:#e4f1fc;">signs of ligature marks</td>
+                <td style="background-color:#e4f1fc;"></td>
+                </tr>
+                <tr>
+                <td>Type of violence </td>
+                <td></td>
+                <td style="background-color:#e4f1fc;">defence related injuries</td>
+                <td style="background-color:#e4f1fc;"></td>
+                </tr>
+                <tr>
+                <td>Other Past history</td>
+                <td></td>
+                <td style="background-color:#e4f1fc;">Breasts</td>
+                <td style="background-color:#e4f1fc;"></td>
+                </tr>
+                <tr>
+                <td>Defensive injuries include</td>
+                <td></td>
+                <td style="background-color:#e4f1fc;">trunk</td>
+                <td style="background-color:#e4f1fc;"></td>
+                </tr>
+                <tr>
+                <td>Inner surfaces of the upper arms</td>
+                <td></td>
+                <td style="background-color:#e4f1fc;">anus</td>
+                <td style="background-color:#e4f1fc;"></td>
+                </tr>
+                <tr>
+                <td>Neck area</td>
+                <td></td>
+                <td style="background-color:#e4f1fc;">HIV tresults </td>
+                <td style="background-color:#e4f1fc;"></td>
+                </tr>
+                <tr>
+                <td>Abdominal examination</td>
+                <td></td>
+                <td style="background-color:#e4f1fc;">Pregnancy results </td>
+                <td style="background-color:#e4f1fc;"></td>
+                </tr>
+                <tr>
+                <td>Legs</td>
+                <td></td>
+                <td style="background-color:#e4f1fc;">Investigations</td>
+                <td style="background-color:#e4f1fc;"></td>
+                </tr>
+                <tr>
+                <td>buttocks</td>
+                <td></td>
+                <td style="background-color:#e4f1fc;">Type of violence based on gender and child abuse</td>
+                <td style="background-color:#e4f1fc;"></td>
+                </tr>
+                <tr>
+                <td>thighs</td>
+                <td></td>
+                <td style="background-color:#e4f1fc;">Sexual</td>
+                <td style="background-color:#e4f1fc;"></td>
+                </tr>
+                <tr>
+                <td>Vaginal walls</td>
+                <td></td>
+                <td style="background-color:#e4f1fc;"></td>
+                <td style="background-color:#e4f1fc;"></td>
+                </tr>
+                <tr>
+                <td>bright blood </td>
+                <td></td>
+                <td style="background-color:#e4f1fc;"></td>
+                <td style="background-color:#e4f1fc;"></td>
+                </tr>
+                <tr>
+                <td>Posterior fourchette area</td>
+                <td></td>
+                <td style="background-color:#e4f1fc;"></td>
+                <td style="background-color:#e4f1fc;"></td>
+                </tr>
+                <tr>
+                <td>GBV Data entry </td>
+                <td></td>
+                <td style="background-color:#e4f1fc;"></td>
+                <td style="background-color:#e4f1fc;"></td>
+                </tr>
+
+                <tr>
+                <td colspan="4">
+
+                 <fieldset>
+                              <legend>What Form do you like to fill?</legend>
+
+                              <openmrs:globalProperty var="GBVEnrolmentChild" key="mch.GBV_Enrolment_Child"  />
+                              <openmrs:globalProperty var="GBVEnrolmentAdult" key="mch.GBV_Enrolment_Adult"  />
+                              <openmrs:globalProperty var="GBVfollowup" key="mch.GBV_followup"  />
+
+
+
+                               <button onClick="showEntryPopup('Enrolment Child Form', ${GBVEnrolmentChild}); return false;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GBV Enrolment &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                               <button onClick="showEntryPopup('Enrolment Adult Form', ${GBVEnrolmentAdult}); return false;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GBV Clinical Form &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                               <button onClick="showEntryPopup('GBV followup Form', ${GBVfollowup}); return false;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GBV Psychological Followup &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+
+      </fieldset>
+
+                </td>
+
+                </tr>
+                <tr>
+                <td colspan="4">
+
+                 <openmrs:globalProperty var="maxEncs" key="dashboard.encounters.maximumNumberToShow" defaultValue="" />
+
+                            <openmrs:portlet url="ancPatientEncounters" id="ancPatientEncountersID" moduleId="mch" patientId="${patient.patientId}" parameters="num=${maxEncs}|showPagination=true" />
+
+
+                </td>
+
+                </tr>
+
+   </table>
+
+
+
+
+ </div>

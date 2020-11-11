@@ -1,0 +1,174 @@
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<div id="NEWBORNT">
+		<table class="section-table">
+			<tr>
+                            <td colspan="8" style="background-color:#5c9ccc;color:white;"><center><b>Newborn and mother  Summary</b></center></td>
+                            </tr>
+                            <tr>
+                            <td colspan="4"><b>New Bon</b> </td>
+                            <td colspan="4"><b>Mother</b></td>
+                            </tr>
+                            <tr>
+                            <td colspan="2"><b>Newborn Identification </b> </td>
+                            <td colspan="2"><b>Clinical info</b></td>
+                            <td colspan="2"><b>History of delivery</b> </td>
+                            <td colspan="2"><b>Clinical info</b></td>
+                            </tr>
+                            <tr>
+                            <td>Names</td>
+                            <td>${formData.infantNames}</td>
+                            <td>Nutrition status</td>
+                            <td>${formData.muacLTTwenty.name.name}</td>
+                            <td colspan="2" rowspan="3">
+                            <c:forEach var="conc" items="${formData.allLastHistoryOfDelivery}">
+                                <c:out value="${conc.name.name}"/> <br /><br />
+                            </c:forEach>
+                            </td>
+                            <td>Conditions/ desease</td>
+                            <td>
+                            <c:forEach var="conc" items="${formData.allConditions}">
+                                       <c:out value="${conc.name.name}"/> <br /><br />
+                              </c:forEach></td>
+                            </tr>
+                            <tr>
+                            <td>Date of birth</td>
+                            <td>${formData.lastBirthDateBabyOne}</td>
+                            <td>Diagnosis</td>
+                            <td></td>
+                            <td>Convulsions/ Fits </td>
+                            <td>
+                            <c:forEach var="conc" items="${formData.allConvulsions}">
+                                                       <c:out value="${conc.name.name}"/> <br /><br />
+                             </c:forEach>
+                            </td>
+                            </tr>
+                            <tr>
+                            <td>Weight at birth </td>
+                            <td>${formData.birthWeight} KG</td>
+                            <td></td>
+                            <td></td>
+                            <td>Eclampsia investigation</td>
+                            <td>
+
+                             <c:forEach var="conc" items="${formData.allEclampsiainvestigation}">
+                                        <c:out value="${conc.name.name}"/> <br /><br />
+                              </c:forEach>
+
+                            </td>
+                            </tr>
+                            <tr>
+                            <td>Height at birth</td>
+                            <td>${formData.birthHeight} CM</td>
+                            <td></td>
+                            <td></td>
+                            <td>Type of delivery</td>
+                            <td></td>
+                            <td>Diagnosis</td>
+                            <td>
+                             <c:forEach var="conc" items="${formData.allDiagnosis}">
+                                        <c:out value="${conc.name.name}"/> <br /><br />
+                              </c:forEach>
+                            </td>
+                            </tr>
+                            <tr>
+                            <td>HIV</td>
+                            <td><c:if test="${formData.lastResultOfHIVOfBaby.conceptId == formData.positiveConcept.conceptId}">
+                               <font color="red">${formData.lastResultOfHIVOfBaby.name.name}</font>
+                               </c:if>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Danger signs during delivery</td>
+                            <td></td>
+                            </tr>
+                           <tr>
+                            <td>RPR</td>
+                            <td>${formData.lastRPROfBaby.name.name}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            </tr>
+                            <tr>
+                            <td>MUAC</td>
+                            <td>
+                                ${formData.lastMUACOfBaby}</font>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            </tr>
+                            <tr>
+                            <td colspan="8">
+
+                           <fieldset>
+                                          <legend>What Form do you like to fill?</legend>
+
+                                          <openmrs:globalProperty var="NEWBORNTransfer" key="mch.NEWBORN_Transfer"  />
+
+                                       <button onClick="showEntryPopup('NEW BORN Transfer Form', ${NEWBORNTransfer}); return false;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Transfer &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+
+                                        </fieldset>
+                            </td>
+
+                            </tr>
+                            <tr>
+                            <td colspan="8">
+
+                             <openmrs:globalProperty var="maxEncs" key="dashboard.encounters.maximumNumberToShow" defaultValue="" />
+
+                                <openmrs:portlet url="ancPatientEncounters" id="ancPatientEncountersID" moduleId="mch" patientId="${patient.patientId}" parameters="num=${maxEncs}|showPagination=true" />
+
+
+                            </td>
+
+                            </tr>
+                            <!-- <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            </tr>
+                            <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            </tr>
+                            <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            </tr>
+                            <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            </tr> -->
+                            </table>
+
+
+
+
+                       </div>

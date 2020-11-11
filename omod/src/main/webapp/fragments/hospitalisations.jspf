@@ -1,0 +1,71 @@
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<div id="hospitalizations"> <!-- HOSPITALISATIONS -->
+		<table class="section-table">
+			<thead>
+				<tr>
+					<th colspan="5">HOSPITALISATIONS:</th>
+				</tr>
+				<tr>
+					<th scope="col" id="col-hospital-emr-1" class="section-emr">EMR</th>
+					<th scope="col" id="col-hospital-view" class="view-row">View</th>
+					<th scope="col" id="col-hospital-diagnostic">Diagnostic</th>
+					<th scope="col" id="col-hospital-date">Date:</th>	 				
+					<th scope="col" id="col-hospital-duration">Durée</th>
+					<th scope="col" id="col-hospital-comment">Commentaire</th>
+				</tr>
+			</thead>
+			<tbody>
+			    <c:set var="shownHospitalizations" value=""/>
+				<c:forEach var="hospitalization" items="${formData.obsMapper.hospitalizations}">
+					<tr <c:if test="${not hospitalization.emr}">class="empty-row"</c:if>>
+						<td class="section-emr"><c:if test="${hospitalization.emr}">&#x2713;</c:if></td>
+						<td class="view-row" align="center">
+							<c:if test="${hospitalization.encounter != null}">
+								<a href="javascript:void(0)" onClick="showEntryAppendPopup('Hospitalization', ${formData.hospitalisationFormId}, ${hospitalization.encounter.encounterId}); return false;">
+									<img src="${pageContext.request.contextPath}/images/file.gif" title="<spring:message code="general.view"/>" border="0" align="top" />
+								</a>
+								<c:set var="shownHospitalizations" value="${shownHospitalizations},${hospitalization.encounter.encounterId}"/>
+							</c:if>
+						</td>
+						<td>
+							<jsp:useBean id="hospitalization" type="org.openmrs.module.mch.mapper.Hospitalization" />
+							<%= UIHelper.getCheckBoxWidget(hospitalization.isMalaria(), "Paludisme") %>
+							<%= UIHelper.getCheckBoxWidget(hospitalization.isPneumonia(), "Pneumonie") %>
+							<%= UIHelper.getCheckBoxWidget(hospitalization.isGastroenteritis(), "Gastroentérite") %>
+							<%= UIHelper.getCheckBoxWidget(hospitalization.isMalnutrition(), "Anémie") %> 
+							<%= UIHelper.getCheckBoxWidget(hospitalization.isMeningitis(), "Méningite") %>
+							<br/>
+							<%= UIHelper.getCheckBoxWidget(hospitalization.isOther(), "Autre:") %><c:if test="${hospitalization.other}"><span class="value-data">${hospitalization.diagnosisOtherString}</span></c:if>
+						</td>
+						<td>
+							<span class="value-date"><c:choose><c:when test="${hospitalization.emr}"><openmrs:formatDate date="${hospitalization.admittanceDate}" format="${FormatDate_General}"/></c:when><c:otherwise>${DateTextPlaceHolder}</c:otherwise></c:choose></span>
+						</td>
+						<td><u>${hospitalization.durationDays}</u>jours <u>${hospitalization.durationWeeks}</u>semaines <u>${hospitalization.durationMonths}</u>mois</td>
+						<td>
+							<span class="value-data">${hospitalization.comments}</span>
+						</td>
+					</tr>
+				</c:forEach>
+				<tr class="new-item-button-row">
+				    <td/>
+				    <td colspan="5">
+						    <button onClick="showEntryPopup('New Hospitalization', ${formData.hospitalisationFormId}); return false;">Nouveau</button>
+					<!--     <c:if test="${!empty formData.encounterTypeEncs}">
+								&nbsp;&nbsp;&nbsp;
+								ajouter à encounter/append to encounter: 
+					            <select class="encounterSelect" onMouseUp="if ($j(this).val() != 0){showEntryAppendPopup('Hospitalization', ${formData.hospitalisationFormId}, $j(this).val())}">
+								<option value="0"></option>
+								<c:forEach var="enc" items="${formData.encounterTypeEncs}">
+								    <c:if test="${fn:contains(shownHospitalizations, enc.encounterId) == false}">
+									<option value="${enc.encounterId}">
+										<openmrs:formatDate date="${enc.encounterDatetime}" format="dd/MM/yyyy"/> / ${enc.provider.familyName} ${enc.provider.givenName} / (${enc.location})
+									</option>	
+									</c:if>
+								</c:forEach>
+								</select>
+							</c:if>  -->	
+				    </td>
+				</tr>
+			</tbody>
+		</table>
+</div>

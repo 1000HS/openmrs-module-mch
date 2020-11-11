@@ -1,0 +1,26 @@
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+
+<td>
+	<%= UIHelper.getCheckBoxWidget(allergy.isEffectAnaphylaxis(), "réaction cutanée") %>
+	<%= UIHelper.getCheckBoxWidget(allergy.isEffectRashMinor(), "éruption légère") %>
+	<%= UIHelper.getCheckBoxWidget(allergy.isEffectRashModerate(), "éruption modérée") %>
+	<%= UIHelper.getCheckBoxWidget(allergy.isEffectRashSevere(), "éruption sévère (muqueuse)") %>
+	<br/>
+	<%= UIHelper.getCheckBoxWidget(allergy.isEffectNausea(), "Nausées") %>
+	<%= UIHelper.getCheckBoxWidget(allergy.isEffectVomiting(), "Vomissements") %>
+	<%= UIHelper.getCheckBoxWidget(allergy.isEffectJaundice(), "Ictère") %>
+	<%= UIHelper.getCheckBoxWidget(allergy.isEffectPeripheralNeuropathy(), "Neuropathie") %> 
+	<%= UIHelper.getCheckBoxWidget(allergy.isEffectAnemia(), "Anémie") %>
+	<%= UIHelper.getCheckBoxWidget(allergy.isEffectLacticAcidosis(), "Acidose Lactique") %>
+	<br/>
+	<%= UIHelper.getCheckBoxWidget(allergy.isEffectHepatitis(), "Hépatite") %>
+	<%= UIHelper.getCheckBoxWidget(allergy.isEffectNightmares(), "Cauchemars") %>
+	<%= UIHelper.getCheckBoxWidget(allergy.isEffectLipodystrophy(), "Lipodystrophie") %> 
+	<%= UIHelper.getCheckBoxWidget(allergy.isEffectOther(), "Autres (a specifier):") %><c:if test="${allergy.effectOther}"><span class="value-data">${allergy.effectOtherString}</span></c:if>
+</td>
+<td>
+	<div><%= UIHelper.getCheckBoxWidget(allergy.isActionTakenTreatmentStop(), "Médicament arreté") %></div>
+	<div><%= UIHelper.getCheckBoxWidget(allergy.isActionTakenChangeOfDose(), "Dose changé") %></div>
+	<div><%= UIHelper.getCheckBoxWidget(allergy.isActionTakenSymptomatic(), "Traitement symptomatique") %></div>
+	<div><%= UIHelper.getCheckBoxWidget(allergy.isActionTakenOther(), "Autre: ") %><c:if test="${allergy.actionTakenOther}"><span class="value-data">${allergy.actionTakenOtherString}</span></c:if></div>
+</td>

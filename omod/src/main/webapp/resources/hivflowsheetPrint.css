@@ -1,0 +1,199 @@
+@media print{@page {size: landscape}}
+
+* { margin:0px; padding: 0px; font-size: 10px; font-family: Times; }
+
+sup { font-size: 6px; }
+
+td, th {
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+
+div#header	{ display: none; 	}
+div#footer	{ display: none; 	}
+div#content	{ padding: 1px; 	}
+		
+.value-label	{ font-weight: bold; }
+.value-data 	{ 
+				  font-family: ‘Lucida Console’, Monaco, monospace;
+				  font-size: 11px;
+				  color: #003366;
+				}
+.value-date 	{ font-family: ‘Lucida Console’, Monaco, monospace;
+				  font-size: 11px;
+				  color: #003366;
+				 }
+
+.value-label-big { 
+					font-weight: bold;
+					font-size: 14px;
+				 }
+.value-data-big  { 
+					color: #003366; 
+					font-size: 14px;
+					font-family: ‘Lucida Console’, Monaco, monospace;
+				 }
+.value-calculated 	{ 
+				  font-family: ‘Lucida Console’, Monaco, monospace;
+				  font-size: 11px;
+				  color: #5B1094;
+				}
+		
+.checkbox-label {
+	padding-left: 3px;
+	padding-right: 5px;
+}
+
+.checkbox-box {
+	outline: 1px solid black;
+	width: 9px;
+	text-align: center;
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 7px;
+}
+
+.checkbox-box-ticked {
+	outline: 1px solid black;
+	width: 9px;
+	text-align: center;
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 7px;
+	background-color: #000000;
+	color: #003366;
+}
+
+.form-header {
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.section-table {
+	width: 100%;
+	margin-bottom: 10px;
+	border: 1px solid black;
+	border-collapse: collapse;
+	border-spacing: 0px;
+}
+
+.section-graph {
+	margin-bottom: 10px;
+}
+	
+table.section-table th	{ background-color: #eeeeee; border: 1px solid black; }
+table.section-table td	{ border: 1px solid black; }
+
+td.section-emr	{ text-align: center; 	}
+
+#col-arv-emr-1	{ font-weight: normal; width: 1%; }
+#col-arv-info	{ font-weight: bold; text-align: left;	width: 57%;	}
+#col-arv-emr-2	{ font-weight: normal; width: 1%; }
+#col-arv-stop	{ width: 41%;	}
+
+#col-tb-emr-1	{ font-weight: normal; width: 1%; }
+#col-tb-info	{ font-weight: bold; text-align: left;	width: 37%;	}
+#col-tb-emr-2	{ font-weight: normal; width: 1%; }
+#col-tb-phase	{ width: 10%;	}
+#col-tb-emr-3	{ font-weight: normal; width: 1%; }
+#col-tb-stop	{ width: 49%;	}
+
+#col-prophylactic-emr-1	{ font-weight: normal; width: 1%; }
+#col-prophylactic-info	{ font-weight: bold; text-align: left;	width: 49%;	}
+#col-prophylactic-emr-2	{ font-weight: normal; width: 1%; }
+#col-prophylactic-stop	{ width: 49%;	}
+
+#col-chronic-emr-1 { font-weight: normal; text-align: center; width: 1%; background-color: #FFFFFF; }
+#col-chronic-info { font-weight: normal; text-align: left; width: 31%; background-color: #FFFFFF; }
+#col-chronic-start-date { font-weight: normal; text-align: left; width: 18%; background-color: #FFFFFF; }
+#col-chronic-emr-2 { font-weight: normal; text-align: center; width: 1%; background-color: #FFFFFF; }
+#col-chronic-stop-date { font-weight: normal; text-align: left; width: 18%; background-color: #FFFFFF; }
+#col-chronic-stop-comment { font-weight: normal; text-align: left; width: 31%; background-color: #FFFFFF; }
+
+#col-allergies-emr-1 { font-weight: normal; text-align: center; width: 1%; background-color: #FFFFFF; }
+#col-allergies-date { font-weight: normal; text-align: left; width: 10%; background-color: #FFFFFF; }
+#col-allergies-med { font-weight: normal; text-align: left; width: 15%; background-color: #FFFFFF; }
+#col-allergies-effect { font-weight: normal; text-align: left; width: 55%; background-color: #FFFFFF; }
+#col-allergies-measures { font-weight: normal; text-align: left; width: 19%; background-color: #FFFFFF; }
+
+#col-hospital-emr-1 { font-weight: normal; text-align: center; width: 1%; background-color: #FFFFFF; }
+#col-hospital-diagnostic { font-weight: normal; text-align: left; width: 40%; background-color: #FFFFFF; }
+#col-hospital-date { font-weight: normal; text-align: left; width: 10%; background-color: #FFFFFF; }
+#col-hospital-duration { font-weight: normal; text-align: left; width: 22%; background-color: #FFFFFF; }
+#col-hospital-comment { font-weight: normal; text-align: left; width: 27%; background-color: #FFFFFF; }
+
+#col-io-emr-1 { font-weight: normal; text-align: center; width: 1%; background-color: #FFFFFF; }
+#col-io-info { font-weight: normal; text-align: left; width: 30%; background-color: #FFFFFF; }
+#col-io-date { font-weight: normal; text-align: left; width: 10%; background-color: #FFFFFF; }
+#col-io-stage { font-weight: normal; text-align: left; width: 29%; background-color: #FFFFFF; }
+#col-io-comment { font-weight: normal; text-align: left; width: 30%; background-color: #FFFFFF; }
+
+#col-misc-emr-1 { font-weight: normal; text-align: center; width: 1%; background-color: #FFFFFF; }
+#col-misc-info { font-weight: normal; text-align: left; width: 60%; background-color: #FFFFFF; }
+#col-misc-date { font-weight: normal; text-align: left; width: 10%; background-color: #FFFFFF; }
+#col-misc-comment { font-weight: normal; text-align: left; width: 29%; background-color: #FFFFFF; }
+
+#col-visits-1 { font-weight: normal; text-align: center; width: 1%; background-color: #FFFFFF; }
+#col-visits-2 { font-weight: normal; text-align: left; width: 10%; background-color: #FFFFFF; }
+#col-visits-3 { font-weight: normal; text-align: left; width: 8%; background-color: #FFFFFF; }
+#col-visits-4 { font-weight: normal; text-align: left; width: 9%; background-color: #FFFFFF; }
+#col-visits-5 { font-weight: normal; text-align: left; width: 9%; background-color: #FFFFFF; }
+#col-visits-6 { font-weight: normal; text-align: left; width: 9%; background-color: #FFFFFF; }
+#col-visits-7 { font-weight: normal; text-align: left; width: 9%; background-color: #FFFFFF; }
+#col-visits-8 { font-weight: normal; text-align: left; width: 9%; background-color: #FFFFFF; }
+#col-visits-9 { font-weight: normal; text-align: left; width: 9%; background-color: #FFFFFF; }
+#col-visits-10 { font-weight: normal; text-align: left; width: 9%; background-color: #FFFFFF; }
+#col-visits-11 { font-weight: normal; text-align: left; width: 9%; background-color: #FFFFFF; }
+#col-visits-12 { font-weight: normal; text-align: left; width: 9%; background-color: #FFFFFF; }
+#col-visits-13 { font-weight: normal; text-align: left; width: 9%; background-color: #FFFFFF; }
+#col-visits-14 { font-weight: normal; text-align: left; width: 9%; background-color: #FFFFFF; }
+#col-visits-15 { font-weight: normal; text-align: left; width: 9%; background-color: #FFFFFF; }
+
+#col-images-emr-1 { font-weight: normal; text-align: center; width: 1%; background-color: #FFFFFF; }
+#col-images-type { font-weight: normal; text-align: left; width: 44%; background-color: #FFFFFF; }
+#col-images-date { font-weight: normal; text-align: left; width: 10%; background-color: #FFFFFF; }
+#col-images-outcome { font-weight: normal; text-align: left; width: 45%; background-color: #FFFFFF; }
+
+.tickLabel { font-size: 8px; }
+
+.heightForAge {	width: 900px; height: 600px; margin: 10px; }
+.lengthForAge {	width: 900px; height: 600px; margin: 10px; }
+.weightForAgeBirth {	width: 900px; height: 600px; margin: 10px; }
+.weightForAge {	width: 900px; height: 600px; margin: 10px; }
+.weightForAgeTotal {	width: 900px; height: 600px; margin: 10px; }
+.heightForAgeTotal {	width: 900px; height: 600px; margin: 10px; }
+.cd4Graph {	width: 900px; height: 600px; margin: 10px; }
+.cd4PercentGraph {	width: 900px; height: 600px; margin: 10px; }
+.weightForLength {	width: 900px; height: 600px; margin: 10px; }
+.weightForHeight {	width: 900px; height: 600px; margin: 10px; }
+.bmiForAge {	width: 900px; height: 600px; margin: 10px; }
+
+.bmiGraph {	width: 720px; height: 540px; }
+
+.viralLoadGraph {	width: 800px; height: 600px; }
+.graphs h1 { font-size: 20px; }
+
+.new-item-button-row { display: none; }
+
+.view-row { display: none; }
+
+table { page-break-inside: avoid; }
+
+
+.ui-tabs-nav {
+	display: none;
+}
+
+table.bmiLegend th, table.bmiLegend td {
+  font-size: 5px;
+  padding: 0px;
+  text-align: center;
+}
+
+table.bmiLegend th {
+  background: #C5DBEC;
+ }
+

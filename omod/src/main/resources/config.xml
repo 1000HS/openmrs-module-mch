@@ -1,0 +1,755 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC "-//OpenMRS//DTD OpenMRS Config 1.3//EN" "../lib-common/config-1.3.dtd">
+<!--  <!DOCTYPE module PUBLIC "-//OpenMRS//DTD OpenMRS Config 1.3//EN" "http://resources.openmrs.org/doctype/config-1.3.dtd"> -->
+<module configVersion="1.3">
+	
+	<id>mch</id>
+	<name>mch</name>
+	<version>0.0.1</version>
+	<package>org.openmrs.module.@MODULE_ID@</package>
+	<author>THS</author>
+	<description>
+		MNCH/ FP – ASRH AND NUTRITION MODULES IN RWANDA
+	</description>
+	<activator>@MODULE_PACKAGE@.MchModuleActivator</activator>
+	
+	<require_version>1.6.1.12909</require_version>
+
+	<require_modules>
+	   		<require_module>org.openmrs.module.htmlformentry</require_module>
+	   		<require_module>org.openmrs.module.heightweighttracker</require_module>
+	</require_modules>
+
+
+	<aware_of_modules>
+		<aware_of_module>org.openmrs.module.legacyui</aware_of_module>
+	</aware_of_modules>
+
+
+	<extension>
+		<point>org.openmrs.patientDashboard.patientSummary</point>
+		<class>@MODULE_PACKAGE@.extension.html.RwandaAdultMCHFlowsheetFormItem</class>
+	</extension>
+	
+	 <extension>
+		<point>org.openmrs.patientDashboard.patientSummary</point>
+		<class>@MODULE_PACKAGE@.extension.html.RwandaMCHFlowsheetFormItem</class>
+	</extension>
+	<extension>
+		<point>org.openmrs.patientDashboardTab</point>
+		<class>@MODULE_PACKAGE@.extension.html.MCHEncountersDashboard</class>
+	</extension>
+	
+	
+	<!-- GENERAL -->
+	<globalProperty>
+		<property>mch.ShowOtherIdentifierTypes</property>
+		<defaultValue>c147b1de-2700-102b-80cb-0017a47871b2,4e458867-9a68-4e55-9fe0-fb49fac4e6b0</defaultValue>
+		<description>
+			list all local patient identifier types by id, uuid or name that you'd like to see in the patient header in the flowsheet.  Comma-delimited.
+		</description>
+	</globalProperty>
+	
+	
+	<!-- ADULT -->
+	<!--<globalProperty>
+		<property>rwandaadulthivflowsheet.adultShowPatientChartLinksIfInProgram</property>
+		<defaultValue>cf7c0e30-2700-102b-80cb-0017a47871b2,cf7c13da-2700-102b-80cb-0017a47871b2,2f7506b4-21e6-445d-ba73-2c782a6ecbee</defaultValue>
+		<description>
+			a comma-delimited list of program uuids, ids, or names.  If in the programs listed, the patient will have the adult flowsheet in the patient dashboard.
+		</description>
+	</globalProperty>
+	<globalProperty>
+		<property>rwandaadulthivflowsheet.Form_NewAllergy</property>
+		<defaultValue>847d3c57-f095-46ef-992f-455a5969b6d1</defaultValue>
+		<description>
+			Adult form ID for htmlform for new allergies
+		</description>
+	</globalProperty>
+	<globalProperty>
+		<property>rwandaadulthivflowsheet.Form_NewHospitalisations</property>
+		<defaultValue>1b2a395d-772d-45db-971d-7c1e8f55ab9e</defaultValue>
+		<description>
+			Adult form ID for hospitalizations
+		</description>
+	</globalProperty>
+	<globalProperty>
+		<property>rwandaadulthivflowsheet.Form_NewOI</property>
+		<defaultValue>5bbaa9fc-7da1-41fd-ab2e-d9b975b90de4</defaultValue>
+		<description>
+			Adult form ID for new OIs (Opportunistic Infections)
+		</description>
+	</globalProperty>
+	<globalProperty>
+		<property>rwandaadulthivflowsheet.Form_NewProblem</property>
+		<defaultValue>b0508003-649d-4fe0-a58e-27916f26e435</defaultValue>
+		<description>
+			Adult form ID for new Problems
+		</description>
+	</globalProperty>
+	<globalProperty>
+		<property>rwandaadulthivflowsheet.Form_NewVisit</property>
+		<defaultValue>ab35557d-b558-4c19-90d4-dbde7260c5b8</defaultValue>
+		<description>
+			adult form ID for new visits
+		</description>
+	</globalProperty>
+	<globalProperty>
+		<property>rwandaadulthivflowsheet.Form_NewLab</property>
+		<defaultValue>20316666-2ce5-462c-b4eb-1e728e2d8663</defaultValue>
+		<description>
+			adult form ID for new labs
+		</description>
+	</globalProperty>
+	<globalProperty>
+		<property>rwandaadulthivflowsheet.Form_NewImage</property>
+		<defaultValue>cc9131cc-836b-4393-9786-2e0fccafdf0a</defaultValue>
+		<description>
+			adult form ID for new images
+		</description>
+	</globalProperty>-->
+	
+	<!-- MCH FORMS -->
+	<globalProperty>
+		<property>mch.showPatientChartLinksIfInProgram</property>
+		<defaultValue>25</defaultValue>
+		<description>
+			a comma-delimited list of program uuids, ids, or names.  If in programs listed, the patient will have the mch flowsheet link in the patient dashboard.
+		</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>mch.showPatientChartLinksIfPatientHasAge</property>
+		<defaultValue>15</defaultValue>
+		<description>
+			Maximum Age for the pedi patient to have mch flowsheet link in the patient dashboard.
+		</description>
+	</globalProperty>
+	<globalProperty>
+		<property>rwandaadulthivflowsheet.adultShowPatientChartLinksIfPatientHasAge</property>
+		<defaultValue>15</defaultValue>
+		<description>
+			Minimum Age for the adult patient to have adult flowsheet link in the patient dashboard.
+		</description>
+	</globalProperty>
+
+
+
+	<globalProperty>
+		<property>rwandapedihivflowsheet.Form_NewAllergy</property>
+		<defaultValue>8b595f0e-e035-4011-b06a-04515dfc2bd9</defaultValue>
+		<description>
+			pedi form ID for htmlform for new allergies
+		</description>
+	</globalProperty>
+	<globalProperty>
+		<property>rwandapedihivflowsheet.Form_NewHospitalisations</property>
+		<defaultValue>e2a3635f-c6df-448c-bb8f-5391858d70a4</defaultValue>
+		<description>
+			pedi form ID for hospitalizations
+		</description>
+	</globalProperty>
+	<globalProperty>
+		<property>rwandapedihivflowsheet.Form_NewOI</property>
+		<defaultValue>95bfa122-5dd9-4c55-8354-431ed78d35a2</defaultValue>
+		<description>
+			pedi form ID for new OIs
+		</description>
+	</globalProperty>
+	<globalProperty>
+		<property>rwandapedihivflowsheet.Form_NewProblem</property>
+		<defaultValue>ce98550f-8059-4889-856f-53636e202b23</defaultValue>
+		<description>
+			pedi form ID for new Problems
+		</description>
+	</globalProperty>
+	<globalProperty>
+		<property>rwandapedihivflowsheet.Form_NewVisit</property>
+		<defaultValue>513d44c2-e08a-4c07-93de-b7b7753c7be1</defaultValue>
+		<description>
+			pedi form ID for new visits
+		</description>
+	</globalProperty>
+	<globalProperty>
+		<property>rwandapedihivflowsheet.Form_NewLab</property>
+		<defaultValue>fc993fc5-3b4a-4807-aa9f-452ad12eca1d</defaultValue>
+		<description>
+			pedi form ID for new labs
+		</description>
+	</globalProperty>
+	<globalProperty>
+		<property>rwandapedihivflowsheet.Form_NewImage</property>
+		<defaultValue>655decb3-c4fc-4550-8cfa-6c71fe7aea0e</defaultValue>
+		<description>pedi form for new images
+		</description>
+	</globalProperty>
+	<globalProperty>
+		<property>mch.Form_ANC</property>
+		<defaultValue>200</defaultValue>
+		<description>ANC flowsheet</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>mch.Form_ANC_Enrolment</property>
+		<defaultValue>134</defaultValue>
+		<description>ANC Enrolment Form</description>
+	</globalProperty>
+	<globalProperty>
+		<property>mch.Form_ANC_Routine</property>
+		<defaultValue>136</defaultValue>
+		<description>ANC Routine Form</description>
+	</globalProperty>
+	<globalProperty>
+		<property>mch.Form_ANC_Emergency</property>
+		<defaultValue>139</defaultValue>
+		<description>ANC Emergency Form</description>
+	</globalProperty>
+	<globalProperty>
+		<property>mch.Form_ANC_Referral</property>
+		<defaultValue>76</defaultValue>
+		<description>ANC Referral Form</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>mch.Form_ASRH</property>
+		<defaultValue>201</defaultValue>
+		<description>ANC flowsheet</description>
+	</globalProperty>
+	<globalProperty>
+		<property>mch.Form_ECD</property>
+		<defaultValue>147</defaultValue>
+		<description>ANC flowsheet</description>
+	</globalProperty>
+	<globalProperty>
+		<property>mch.Form_EPI</property>
+		<defaultValue>203</defaultValue>
+		<description>ANC flowsheet</description>
+	</globalProperty>
+	<globalProperty>
+		<property>mch.Form_FP</property>
+		<defaultValue>202</defaultValue>
+		<description>ANC flowsheet</description>
+	</globalProperty>
+	<globalProperty>
+		<property>mch.Form_GBV</property>
+		<defaultValue>204</defaultValue>
+		<description>ANC flowsheet</description>
+	</globalProperty>
+	<globalProperty>
+		<property>mch.Form_GMP</property>
+		<defaultValue>208</defaultValue>
+		<description>ANC flowsheet</description>
+	</globalProperty>
+	<globalProperty>
+		<property>mch.Form_IMNCI</property>
+		<defaultValue>206</defaultValue>
+		<description>ANC flowsheet</description>
+	</globalProperty>
+	<globalProperty>
+		<property>mch.Form_INTRAPARTUM</property>
+		<defaultValue>208</defaultValue>
+		<description>ANC flowsheet</description>
+	</globalProperty>
+	<globalProperty>
+		<property>mch.Form_INTRAPARTUM_Assessment_and_care_of_woman_in_labour</property>
+		<defaultValue>195</defaultValue>
+		<description>Assessment and care of woman in labour</description>
+	</globalProperty>
+	<globalProperty>
+		<property>mch.Form_INTRAPARTUM_Delivery_outcome_and_New_Born_Registration</property>
+		<defaultValue>199</defaultValue>
+		<description>Delivery outcome and New Born Registration</description>
+	</globalProperty>
+    <globalProperty>
+        <property>mch.Form_INTRAPARTUM_FollowUp_woman_in_labour</property>
+        <defaultValue>237</defaultValue>
+        <description>Delivery outcome and New Born Registration</description>
+    </globalProperty>
+
+	<globalProperty>
+		<property>mch.Form_KMC</property>
+		<defaultValue>208</defaultValue>
+		<description>ANC flowsheet</description>
+	</globalProperty>
+	<globalProperty>
+		<property>mch.Form_NEWBORNTRANSFER</property>
+		<defaultValue>187</defaultValue>
+		<description>ANC flowsheet</description>
+	</globalProperty>
+	<globalProperty>
+		<property>mch.Form_PNC</property>
+		<defaultValue>208</defaultValue>
+		<description>PNC flowsheet</description>
+	</globalProperty>
+	<globalProperty>
+		<property>mch.Form_PNC_0_24H</property>
+		<defaultValue>145</defaultValue>
+		<description>PNC 0-24H</description>
+	</globalProperty>
+	<globalProperty>
+		<property>mch.Form_PNC_1_4</property>
+		<defaultValue>153</defaultValue>
+		<description>PNC 1-4</description>
+	</globalProperty>
+	<globalProperty>
+		<property>mch.Form_KMC_Management</property>
+		<defaultValue>188</defaultValue>
+		<description>KMC Management form Id</description>
+	</globalProperty>
+	<globalProperty>
+		<property>mch.Form_KMC_Exit</property>
+		<defaultValue>189</defaultValue>
+		<description>KMC Exit Form Exit</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>mch.EPI_Vaccination_Records</property>
+		<defaultValue>159</defaultValue>
+		<description>EPI Vaccination Records</description>
+	</globalProperty>
+	<globalProperty>
+		<property>mch.EPI_Examination</property>
+		<defaultValue>160</defaultValue>
+		<description>EPI Examination</description>
+	</globalProperty>
+
+
+
+	<globalProperty>
+		<property>mch.IMNCI_0-7_Day</property>
+		<defaultValue>218</defaultValue>
+		<description>IMNCI 0-7 Day Examination</description>
+	</globalProperty>
+	<globalProperty>
+		<property>mch.IMNCI_1W-2M</property>
+		<defaultValue>194</defaultValue>
+		<description>IMNCI 1W-2M Examination</description>
+	</globalProperty>
+	<globalProperty>
+		<property>mch.IMNCI_2M-5Y</property>
+		<defaultValue>191</defaultValue>
+		<description>IMNCI 2M-5Y Examination</description>
+	</globalProperty>
+	<globalProperty>
+		<property>mch.IMNCI_FollowUP</property>
+		<defaultValue>187</defaultValue>
+		<description>EPI Examination</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>mch.ECD_Enrolment</property>
+		<defaultValue>147</defaultValue>
+		<description>ECD Enrolment Form id</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>mch.ECD_FollowUP</property>
+		<defaultValue>236</defaultValue>
+		<description>ECD Follow-UP form Id</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>mch.GMP_6M_History_and_followup</property>
+		<defaultValue>224</defaultValue>
+		<description>GMP (less than 6M) History and followup Form id</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>mch.GMP_6M_59M_History_and_followup</property>
+		<defaultValue>187</defaultValue>
+		<description>225 (6M-59M) History and followup Form id</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>mch.GMP_5_9Y_History_and_followup</property>
+		<defaultValue>226</defaultValue>
+		<description>GMP_5-9Y_History_and_followu</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>mch.GMP_10_18Y_History_and_followup</property>
+		<defaultValue>227</defaultValue>
+		<description>GMP_10_18Y_History_and_followup</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>mch.FP_Enrolment</property>
+		<defaultValue>234</defaultValue>
+		<description>FP Enrolment Form id</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>mch.FP_Monitoring_sheet_and_exams_followup</property>
+		<defaultValue>235</defaultValue>
+		<description>FP_Monitoring_sheet_and_exams_followup form Id</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>mch.ASRH_Enrolment</property>
+		<defaultValue>233</defaultValue>
+		<description>ASRH_Enrolment Form id</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>mch.GBV_Enrolment_Child</property>
+		<defaultValue>230</defaultValue>
+		<description>GBV_Enrolment_Child Form id</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>mch.GBV_Enrolment_Adult</property>
+		<defaultValue>231</defaultValue>
+		<description>GBV_Enrolment_Adult Form id</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>mch.GBV_followup</property>
+		<defaultValue>232</defaultValue>
+		<description>GBV_followup form Id</description>
+	</globalProperty>
+	<globalProperty>
+		<property>mch.NEWBORN_Transfer</property>
+		<defaultValue>213</defaultValue>
+		<description>GBV_followup form Id</description>
+	</globalProperty>
+    <globalProperty>
+        <property>mch.program</property>
+        <defaultValue>25</defaultValue>
+        <description>MCH program id</description>
+    </globalProperty>
+
+	<globalProperty>
+		<property>mch.Form_ANC_FlowSheet</property>
+		<defaultValue>238</defaultValue>
+		<description>ANC flowsheet</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>mch.Form_Neo_admission</property>
+		<defaultValue>241</defaultValue>
+		<description>mch.Form_Neo_admission</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>mch.Form_Neo_admission_infant_bellow_1_month</property>
+		<defaultValue>244</defaultValue>
+		<description>mch.Form_Neo_admission_infant_bellow_1_month</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>mch.Form_Neo_daily_evaluation_and_orders</property>
+		<defaultValue>245</defaultValue>
+		<description>mch.Form_Neo_daily_evaluation_and_orders</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>mch.Form_Neo_nursing_assessment</property>
+		<defaultValue>242</defaultValue>
+		<description>mch.Form_Neo_nursing_assessment</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>mch.Form_Neo_Progress_note</property>
+		<defaultValue>247</defaultValue>
+		<description>mch.Form_Neo_Progress_note</description>
+	</globalProperty>
+
+
+	<globalProperty>
+		<property>mch.Form_Neo_education</property>
+		<defaultValue>248</defaultValue>
+		<description>mch.Form_Neo_education</description>
+	</globalProperty>
+
+
+
+	<!-- CONSTANTS -->
+	<globalProperty>
+		<property>mch.constants</property>
+		<defaultValue>
+OIS_THAT_ARE_STIS = 2c959aff-57cc-4e26-9853-db756bfbd818
+NORMAL = 3cd750a0-26fe-102b-80cb-0017a47871b2
+ASSISTANCE_REQUIRED = d335ec09-c724-4327-9726-f3c984bb1ca1
+BEDRIDDEN = 3cdc9c18-26fe-102b-80cb-0017a47871b2
+ABSTINENCE = 3cdcf5e6-26fe-102b-80cb-0017a47871b2
+CONDOMS = 3cce7a20-26fe-102b-80cb-0017a47871b2
+NATURAL_FAMILY_PLANNING = 3ceb5082-26fe-102b-80cb-0017a47871b2
+ABSOLUTE_LYMPHOCYTE_COUNT = 3cd58018-26fe-102b-80cb-0017a47871b2
+ADVERSE_EFFECT = 3cd96052-26fe-102b-80cb-0017a47871b2
+ADVERSE_EFFECT_ACTION_TAKEN_NONCODED = 3cdc7b34-26fe-102b-80cb-0017a47871b2
+ADVERSE_EFFECT_CONSTRUCT = 3cd95d5a-26fe-102b-80cb-0017a47871b2
+ADVERSE_EFFECT_DATE = 3cd964bc-26fe-102b-80cb-0017a47871b2
+ADVERSE_EFFECT_MEDICATION = 3cd95ed6-26fe-102b-80cb-0017a47871b2
+ADVERSE_EFFECT_MEDICATION_NONCODED = 2c62cce0-8b88-4b9e-8b22-c99c7ccc3e27
+ADVERSE_EFFECT_NONCODED = 3cdd0c48-26fe-102b-80cb-0017a47871b2
+ADVERSE_EVENT_ACTION_TAKEN = 3cdc7e2c-26fe-102b-80cb-0017a47871b2
+ANAPHYLAXIS = 3cd68008-26fe-102b-80cb-0017a47871b2
+ANEMIA = 3ccc4764-26fe-102b-80cb-0017a47871b2
+ASSESSMENT_COMMENTS = 3ce888c0-26fe-102b-80cb-0017a47871b2
+ASTHMA = 3ccc4bf6-26fe-102b-80cb-0017a47871b2
+CD4_COUNT = 3ceda710-26fe-102b-80cb-0017a47871b2
+CHANGE_OF_DOSAGE = 15c5c473-19c4-4866-9cbc-a964c289faf2
+CHEST_XRAY = a14a50d0-86dd-4cc2-9075-d748d30c3ca7
+CHEST_XRAY_CONSTRUCT = 1051a8bf-0fea-4062-8132-a32178f47084
+CHRONIC_CARE_CONSTRUCT = 5a38854c-db5e-4d64-baae-e4c9dc2b7e1b
+CHRONIC_CARE_DIAGNOSIS = bb7e04d8-3355-4fe8-9c87-98642eafab93
+CHRONIC_CARE_DIAGNOSIS_OTHER = 0814d34f-a6ab-408c-848b-c69c96b42f70
+CLINICAL_IMPRESSION_COMMENTS = 3cd9d956-26fe-102b-80cb-0017a47871b2
+COMPUTED_TOMOGRAPHY_SCAN_HEAD = 3cd498d8-26fe-102b-80cb-0017a47871b2
+CURRENT_OPPORTUNISTIC_INFECTION = 3cda106a-26fe-102b-80cb-0017a47871b2
+Current_opportunistic_infection_construct = a5694b2e-22f0-487d-a22d-06771ae6b82d
+CURRENT_OPPORTUNISTIC_INFECTION_OR_COMORBIDITY_CONFIRMED_OR_PRESUMED = 0ae23a5a-15f5-102d-96e4-000c29c2a5d7
+CURRENT_OPPORTUNISTIC_INFECTION_OR_COMORBIDITY_CONFIRMED_OR_PRESUMED_NON_CODED = 3cdd0f04-26fe-102b-80cb-0017a47871b2
+CURRENT_OI_DEPRESSION = 3cce9514-26fe-102b-80cb-0017a47871b2
+CURRENT_OI_CARDIOVASCULAR_DISEASE = 3cd67d1a-26fe-102b-80cb-0017a47871b2
+CURRENT_OI_CEREBRAL_LYMPHOMA = 3cd9e0b8-26fe-102b-80cb-0017a47871b2
+CURRENT_OI_KAPOSIS_SARCOMA = 3cd173f6-26fe-102b-80cb-0017a47871b2
+CURRENT_OI_NEUROLOGICAL_DEFICIT = 3cd659ac-26fe-102b-80cb-0017a47871b2
+CURRENT_OI_TUBERCULOSIS = 3ccca7cc-26fe-102b-80cb-0017a47871b2
+CURRENT_OI_PULMONARY_TUBERCULOSIS = 3cdbd9b8-26fe-102b-80cb-0017a47871b2
+CURRENT_OI_EXTRAPULMONARY_TUBERCULOSIS = 3cdbd670-26fe-102b-80cb-0017a47871b2
+CURRENT_OI_WEIGHT_LOSS_GREATER_THAN_10_PERCENT =  3cd9c77c-26fe-102b-80cb-0017a47871b2
+DATE_OF_GENERAL_TEST = 070ce722-131c-481c-9c37-6522f6de8cc0
+DATE_OF_HOSPITAL_ADMITTANCE = 027564d3-1be0-477f-b280-9a2b48631ff4
+DATE_OF_LABORATORY_TEST = bbeb58d7-63ba-4d7b-ac5b-4f72d3985888
+DAYS = 3cd706b8-26fe-102b-80cb-0017a47871b2
+DIABETES = edf4ecc4-44f6-457a-b561-179f4426b16a
+DIABETES_MELLITUS = 3cce629c-26fe-102b-80cb-0017a47871b2
+DIAGNOSIS_WHILE_HOSPITALIZED = 3ce1492a-26fe-102b-80cb-0017a47871b2
+DIAGNOSIS_WHILE_HOSPITALIZED_NON_CODED = 3cdceff6-26fe-102b-80cb-0017a47871b2
+DRUG_3TC = 3cd24e3e-26fe-102b-80cb-0017a47871b2
+DRUG_ABC = 3cd466b0-26fe-102b-80cb-0017a47871b2
+DRUG_AZT = 3cd444be-26fe-102b-80cb-0017a47871b2
+DRUG_AZT_3TC = 3cd25168-26fe-102b-80cb-0017a47871b2
+DRUG_AZT_3TC_AND_ABC = 3ce1b8ba-26fe-102b-80cb-0017a47871b2
+DRUG_AZT_3TC_EFV = 3cdc4d3a-26fe-102b-80cb-0017a47871b2
+DRUG_AZT_3TC_LORR = b85ee495-4aaa-4037-82ec-ccb781df9741
+DRUG_AZT_3TC_NVP = 3cdc4a42-26fe-102b-80cb-0017a47871b2
+DRUG_D4T = 3cd24984-26fe-102b-80cb-0017a47871b2
+DRUG_D4T_3TC = 3ce83c3a-26fe-102b-80cb-0017a47871b2
+DRUG_D4T_3TC_EFV = 3cdc4ec0-26fe-102b-80cb-0017a47871b2
+DRUG_D4T_3TC_NVP = 3cd43a64-26fe-102b-80cb-0017a47871b2
+DRUG_D4T30_3TC_EFV = 3cdb9818-26fe-102b-80cb-0017a47871b2
+DRUG_D4T30_3TC_NVP = 3cdb9372-26fe-102b-80cb-0017a47871b2
+DRUG_D4T40_3TC_EFV = 3cdb998a-26fe-102b-80cb-0017a47871b2
+DRUG_D4T40_3TC_NVP = 3cdb94ee-26fe-102b-80cb-0017a47871b2
+DRUG_DDI = 3cd44248-26fe-102b-80cb-0017a47871b2
+DRUG_DDI_3TC_LOPR = f39a3380-46ef-4970-a62c-0c58d82785d2
+DRUG_DDI_ABC_LOPR = 5bfedb97-d1b0-43bc-b1df-f74e59434990
+DRUG_DDI_AZT_LOPR = c3f4209e-652d-40c4-a4b0-d4a3228d4aa3
+DRUG_DDI_TDF_LOPR = f98a0e62-53de-4908-9e46-35d011dcac3e
+DRUG_DIDANOSINE_ABACAVIR_LOPINAVIR_RITONAVIR = 5bfedb97-d1b0-43bc-b1df-f74e59434990
+DRUG_EFV = 3cd25622-26fe-102b-80cb-0017a47871b2
+DRUG_INFANT_NVP = 3cf34166-26fe-102b-80cb-0017a47871b2
+DRUG_LOPINAVIR_AND_RITONAVIR = 3cd43d98-26fe-102b-80cb-0017a47871b2
+DRUG_NVP = 3cd252f8-26fe-102b-80cb-0017a47871b2
+DRUG_NVP_UNIQUE_DOSE = 3ce1ba2c-26fe-102b-80cb-0017a47871b2
+DRUG_TDF = 3cd45166-26fe-102b-80cb-0017a47871b2
+DRUG_TDF_3TC_EFV = e43b308c-a303-4524-b4bd-a728a9f52faf
+DRUG_TDF_3TC_LOPR = 5634523f-5da1-40be-95db-380e159fd652
+DRUG_TDF_3TC_NVP = 4ff47449-6108-4823-89b8-986426d84d55
+DRUG_TDF_ABC_LOPR = 8aadf10d-5c2c-46c0-b422-8ed83d7731be
+DRUG_TDF_AZT_LOPR = 3ca5e860-a818-44d7-b986-893df2e85a98
+DRUG_TDF_FTC = 63a4acf0-0762-44a3-aad1-3230289ce4a7
+DRUG_TDF_FTC_NVP = 898d8570-60ff-4f4c-aef3-547d6aa0d809
+DRUG_TNF_3TC = 06793d30-bf06-469f-8ae9-c9c06a8c444b
+DRUG_UNAVAILABLE = 3cdd79d0-26fe-102b-80cb-0017a47871b2
+DRUG_WITHDRAWN = 3cdc79b8-26fe-102b-80cb-0017a47871b2
+DRUG_COTRIMOXAZOLE = 3cd51772-26fe-102b-80cb-0017a47871b2 
+DRUG_FLUCONAZOLE = 3cd3ec30-26fe-102b-80cb-0017a47871b2
+DRUG_DAPSONE = 3cccd95e-26fe-102b-80cb-0017a47871b2
+Duration_of_hospitalization = bd7a77ed-32ed-43cd-9719-e3ab09f22457
+DURATION_OF_HOSPITALIZATION_CONSTRUCT = 5326b247-4899-4eab-b265-b90ecd66adc2
+EPILEPSY = 3cce0a90-26fe-102b-80cb-0017a47871b2
+FREE_TEXT_REASON_FOR_POOR_ADHERENCE_TO_ANTIRETROVIRAL_THERAPY = 3ce67814-26fe-102b-80cb-0017a47871b2
+FUNCTIONAL_ABILITY_OF_THE_PATIENT = 3cdc979a-26fe-102b-80cb-0017a47871b2
+GASTROENTERITIS = 3cce8510-26fe-102b-80cb-0017a47871b2
+GRANULOCYTE = 43119902-673c-4ee1-82c8-349477440760
+HEART_FAILURE = 0670f6b9-5456-4bd3-86b1-846abc4fe2ba
+HEIGHT_CM = 3ce93cf2-26fe-102b-80cb-0017a47871b2
+HEMATOCRIT = 3cd69a98-26fe-102b-80cb-0017a47871b2
+HEMOGLOBIN = 3ccc7158-26fe-102b-80cb-0017a47871b2
+HEPATITIS = 3ccc7d2e-26fe-102b-80cb-0017a47871b2
+HIV_VIRAL_LOAD = 3cd4a882-26fe-102b-80cb-0017a47871b2
+HOSPITALIZATION_COMMENT = 25a85083-15e1-4439-9bfa-8863588ff3c1
+HOSPITALIZATION_CONSTRUCT = ab89e23f-631b-47d7-8fd4-f035bec6a0b0
+HOSPITALIZATION_DISCHARGE_DATE = 61f48c84-714d-42b3-805c-15645370deb8
+INTERACTION_WITH_TUBERCULOSIS_DRUG = e9f7f336-1b02-4734-99bd-3cb15fa4a2b6
+JAUNDICE = 3ccea1bc-26fe-102b-80cb-0017a47871b2
+LABORATORY_EXAMINATIONS_CONSTRUCT = 3cd9b05c-26fe-102b-80cb-0017a47871b2
+LACTIC_ACIDOSIS = 3cda6d62-26fe-102b-80cb-0017a47871b2
+LIPODYSTROPHY = 3ce15dca-26fe-102b-80cb-0017a47871b2
+MALARIA = 3ccd0f0a-26fe-102b-80cb-0017a47871b2
+MALNUTRITION = 3cccb654-26fe-102b-80cb-0017a47871b2
+MEDICAL_IMAGE_CONSTRUCT = 3ce43fb8-26fe-102b-80cb-0017a47871b2
+MENINGITIS = 3cccaab0-26fe-102b-80cb-0017a47871b2
+METHOD_OF_FAMILY_PLANNING = 3ccfbd0e-26fe-102b-80cb-0017a47871b2
+MONTHS = 3cd70b68-26fe-102b-80cb-0017a47871b2
+NAUSEA = 3cf1c610-26fe-102b-80cb-0017a47871b2
+NEGATIVE = 3cd28732-26fe-102b-80cb-0017a47871b2
+NIGHTMARES = 3ce160b8-26fe-102b-80cb-0017a47871b2
+NO = 3cd6f86c-26fe-102b-80cb-0017a47871b2
+NON_REACTIVE = 3cd8f586-26fe-102b-80cb-0017a47871b2
+NONE = 3cd743f8-26fe-102b-80cb-0017a47871b2
+NOT_DONE = 3cd75550-26fe-102b-80cb-0017a47871b2
+NUMBER_OF_DOSES_OF_ANTIRETROVIRALS_MISSED_IN_THE_PAST_MONTH = 3cdd3204-26fe-102b-80cb-0017a47871b2
+OTHER_LAB_TEST_CONSTRUCT = 3ce1c792-26fe-102b-80cb-0017a47871b2
+OTHER_LAB_TEST_NAME = 3ce1c90e-26fe-102b-80cb-0017a47871b2
+OTHER_LAB_TEST_RESULT = 3ce1ca8a-26fe-102b-80cb-0017a47871b2
+OTHER_NON_CODED = 3cee7fb4-26fe-102b-80cb-0017a47871b2
+OUTPATIENT_DIAGNOSIS = f0230f4a-1b20-4a47-bce9-c5a9c01367ec
+OPPORTUNISTIC_INFECTION = cfd246e2-db79-4ab9-bc7a-a45813734a3b
+OPPORTUNISTIC_INFECTION_SET = 71e2fc5d-6ef1-411b-8a0c-b6604fd17a89 
+OPPORTUNISTIC_INFECTION_START_DATE = fc718b0c-34bd-4b22-a678-f1fd323b3a9a
+PATIENT_DEFAULTED = 3cdd5176-26fe-102b-80cb-0017a47871b2
+PATIENT_DIED = 3cdd446a-26fe-102b-80cb-0017a47871b2
+PATIENT_HAD_SIDE_EFFECTS = 3cde61e2-26fe-102b-80cb-0017a47871b2
+PATIENT_HAS_DIABETES = 3ce4c50a-26fe-102b-80cb-0017a47871b2
+PATIENT_PREGNANT = 3cdd757a-26fe-102b-80cb-0017a47871b2
+PATIENT_VISIT_CONSTRUCT = 220304e9-556c-4c74-b1c7-38357cc9561a
+PERIPHERAL_NEUROPATHY = 3cd471be-26fe-102b-80cb-0017a47871b2
+PLATELETS = 3cd3d038-26fe-102b-80cb-0017a47871b2
+PNEUMONIA = 3ccc91c4-26fe-102b-80cb-0017a47871b2
+POSITIVE = 3cd3a7a2-26fe-102b-80cb-0017a47871b2
+PREGNANCY_STATUS = 3ceb4880-26fe-102b-80cb-0017a47871b2
+PREVIOUS_DIAGNOSIS = 3cd6773e-26fe-102b-80cb-0017a47871b2
+PREVIOUS_DIAGNOSIS_CONSTRUCT = 3cd675b8-26fe-102b-80cb-0017a47871b2
+PREVIOUS_DIAGNOSIS_DATE = 3cd6817a-26fe-102b-80cb-0017a47871b2
+PROPHYLAXIS_REASON_FOR_STOPPING_TOXICITY = 3cdc1068-26fe-102b-80cb-0017a47871b2
+PROPHYLAXIS_REASON_FOR_STOPPING_ABANDONED = 3cdd5176-26fe-102b-80cb-0017a47871b2
+PROPHYLAXIS_REASON_FOR_STOPPING_OUT_OF_STOCK = 3cde143a-26fe-102b-80cb-0017a47871b2
+PROPHYLAXIS_REASON_FOR_STOPPING_CD4_IMPROVEMENT = 3cdb7ad6-26fe-102b-80cb-0017a47871b2
+PULMONARY_EFFUSION = e68eda20-36f1-4142-a43a-02e1fb29bb32
+RAPID_PLASMIN_REAGENT = 3cdb36f2-26fe-102b-80cb-0017a47871b2
+RASH_MINOR = 3cdcfe56-26fe-102b-80cb-0017a47871b2
+RASH_MODERATE = 3cdd098c-26fe-102b-80cb-0017a47871b2
+RASH_SEVERE = 3cdd0af4-26fe-102b-80cb-0017a47871b2
+REACTIVE = 3cd8f3f6-26fe-102b-80cb-0017a47871b2
+REGIMEN_FAILURE = 3cd49432-26fe-102b-80cb-0017a47871b2
+RENAL_FAILURE = 894f306e-a868-44b8-b580-93495e3cca4c
+RESULT_OF_TUBERCULOSIS_SCREENING_QUALITATIVE = 3ce14c2c-26fe-102b-80cb-0017a47871b2
+RESULT_OF_TB_SMEAR = 9a5a27de-34d5-4858-a98e-8f6f867e655e
+RESULT_OF_TB_SMEAR_POSITIVE = 3cd3a7a2-26fe-102b-80cb-0017a47871b2
+RESULT_OF_TB_SMEAR_WEAKLY_POSITIVE = 3cda1dd0-26fe-102b-80cb-0017a47871b2
+RESULT_OF_TB_SMEAR_MODERATELY_POSITIVE = 3cda1ad8-26fe-102b-80cb-0017a47871b2
+RESULT_OF_TB_SMEAR_STRONGLY_POSITIVE = 3cda1c54-26fe-102b-80cb-0017a47871b2
+RESULT_OF_TB_SMEAR_NEGATIVE = 3cd28732-26fe-102b-80cb-0017a47871b2
+SERUM_CREATININE = 3cd4374e-26fe-102b-80cb-0017a47871b2
+SERUM_GLUCOSE = 3cd4e194-26fe-102b-80cb-0017a47871b2
+SERUM_GLUTAMIC_OXALOACETIC_TRANSAMINASE = 3cd275d0-26fe-102b-80cb-0017a47871b2
+SERUM_GLUTAMIC_PYRUVIC_TRANSAMINASE = 3cd27760-26fe-102b-80cb-0017a47871b2
+SEVERITY_OF_CARDIOMEGALY = 2510699c-6d22-47fb-93c2-cd8a6c89a9cd
+SEXUALLY_TRANSMITTED_INFECTION_SYMPTOMS_COMMENT = 3ce6c3fa-26fe-102b-80cb-0017a47871b2
+SYMPTOMATIC = 3cd6fd1c-26fe-102b-80cb-0017a47871b2
+TB_TREATMENT_TYPE = 3ce3d730-26fe-102b-80cb-0017a47871b2
+TB_TREATMENT_TYPE_INITIAL = 3ce3d5b4-26fe-102b-80cb-0017a47871b2
+TB_TREATMENT_TYPE_RETREATMENT = 3ce3d8a2-26fe-102b-80cb-0017a47871b2
+TB_TREATMENT_TYPE_MDRTB = da36e0f6-81b3-4e82-9df9-43cff48a0e03
+TB_DRUG_ISONIAZID_PROPHYLAXIS = 3cd27a8a-26fe-102b-80cb-0017a47871b2
+TB_DRUG_RHEZ = 3cd769c8-26fe-102b-80cb-0017a47871b2
+TB_DRUG_RH = 3cd7d548-26fe-102b-80cb-0017a47871b2
+TB_DRUG_RHZ = 3cd40cec-26fe-102b-80cb-0017a47871b2
+TB_DRUG_RHE = 3cdc503c-26fe-102b-80cb-0017a47871b2
+TB_DRUG_AMOX_CLAV = 3cd11a3c-26fe-102b-80cb-0017a47871b2
+TB_TREATMENT_OUTCOME_GUERI_CURED = 3cdd7408-26fe-102b-80cb-0017a47871b2  
+TB_TREATMENT_OUTCOME_ECHEC_FAILED = 3cd49432-26fe-102b-80cb-0017a47871b2
+TB_TREATMENT_OUTCOME_COMPLETE = 3cdcecea-26fe-102b-80cb-0017a47871b2
+TB_TREATMENT_OUTCOME_ABAONDONED = 3cdd5176-26fe-102b-80cb-0017a47871b2
+TB_TREATMENT_OUTCOME_TRANSFERED = 3cdd5c02-26fe-102b-80cb-0017a47871b2
+TB_TREATMENT_OUTCOME_DIED = 3cdd446a-26fe-102b-80cb-0017a47871b2
+TESTS_ORDERED = 3cd937e4-26fe-102b-80cb-0017a47871b2
+TESTS_ORDERED_NON_CODED = 3ce1654a-26fe-102b-80cb-0017a47871b2
+TIME_UNITS = f1904502-319d-4681-9030-e642111e7ce2
+TREATMENT_GROUP = c3170e98-3eeb-4172-8d96-91e4fe37d3b0
+VOMITING = 3cf1c930-26fe-102b-80cb-0017a47871b2
+WEEKS = 3cd7091a-26fe-102b-80cb-0017a47871b2
+WEIGHT_KG = 3ce93b62-26fe-102b-80cb-0017a47871b2
+WHITE_BLOOD_CELLS = 3cd2a906-26fe-102b-80cb-0017a47871b2
+WHO_STAGE = 3cdb3b02-26fe-102b-80cb-0017a47871b2
+XRAY_CHEST = 3ccc6186-26fe-102b-80cb-0017a47871b2
+YES = 3cd6f600-26fe-102b-80cb-0017a47871b2
+PatientIdentiferId_Tracnet = 3289e0fc-7b11-4ec4-b8d6-a62fc97bd4c9
+PatientIdentiferId_IMB = 3289e0fc-7b11-4ec4-b8d6-a62fc97bd4c9
+ProgramId_AdultHIVProgram = cf7c0e30-2700-102b-80cb-0017a47871b2
+ProgramId_PediHIVProgram = cf7c16e6-2700-102b-80cb-0017a47871b2
+HIV_DIAGNOSIS_DATE = 3ce496ca-26fe-102b-80cb-0017a47871b2
+DRUG_ISONIAZID = 3cd27a8a-26fe-102b-80cb-0017a47871b2
+Z_SCORE_WEIGHT = c9d8c9db-518c-4a00-985d-d2fc8ac1f739
+Z_SCORE_HEIGHT = 6d4b1720-f45c-4069-98d9-e7e865105a7a
+HEIGHT_WEIGHT_PERCENTILE = 2438e295-d9da-4d5c-bacc-13c313e34755
+PATIENT_INFORMED = 67895ecf-c4e4-4756-b4cf-a4c495992892
+PATIENT_NOT_INFORMED = a427e3c3-e638-4f0d-af7b-c9337364b428
+CD4_PERCENTAGE = 3cd3d1be-26fe-102b-80cb-0017a47871b2
+ABDOMINAL_ULTRASOUND = 3cd49748-26fe-102b-80cb-0017a47871b2
+TREATMENT_COMPLETE = 3cdcecea-26fe-102b-80cb-0017a47871b2
+INFORMED_STATUS = 1b81c04b-ecf5-4ae8-bdbe-71959b677302
+ADULT_FLOWSHEET_ENCOUNTER_ID = a703372d-28b7-4831-9817-ee385c8c47d8
+PEDI_FLOWSHEET_ENCOUNTER_ID = 0ff6c390-edb1-4325-a20a-7e6485cdb085
+NEXT_VISIT = 3ce94df0-26fe-102b-80cb-0017a47871b2
+OPPORTUNISTIC_INFECTIONS = c43c0462-be15-435b-9a1a-2a3fa450247d
+OPPORTUNISTIC_INFECTIONS_NON_CODED = 35c85d2b-fbe6-4287-be3a-91e098529104
+STI_INFECTIONS = 812acd3b-08f8-4f56-8162-98e0f6b26630
+STI_INFECTIONS_NON_CODED = a8b35975-7680-4ef1-8298-de222d361eb8
+STI_SET = fc871ec0-7865-4f01-ab2f-3790f518160b
+MEDICAL_HISTORY = 9fa5a4ad-5675-4459-81ca-a52fdf77c142
+LMP = 3cd653c6-26fe-102b-80cb-0017a47871b2
+GRAVIDITY = 3cee82de-26fe-102b-80cb-0017a47871b2
+EXPECTED_DUE_DATE = ea6a744d-846c-4e29-bc89-30404853c4f9
+DURATION_OF_PREGNANCY = d616d705-6c11-4b7f-96ec-a8c7994a07bc
+PATIENT_ARRIVED_WITH_PARTNER = d8986fab-ab55-44d3-8ff5-b93a96b89bbd
+PARITY = 3cd6dda0-26fe-102b-80cb-0017a47871b2
+NUMBER_OF_ABORTIONS = 6df78bbb-24a6-4a1d-af5a-3717ecbeb260
+NUMBER_OF_CESAREAN_SECTIONS = 9aee29d7-8d05-4195-bca6-1eaa606fc79d
+OBSTETRIC_HISTORY = 0aed6bb3-74f0-45ba-a0fc-de04f64b2bbb
+CURRENT_PROBLEMS = bf6eee1f-088a-4f2e-9cbd-2a51069eeecd
+DANGER_SIGNS = 2bc2d969-302a-479d-a005-312ae072db03
+TEMPERATURE = 3ce939d2-26fe-102b-80cb-0017a47871b2
+DIASTOLIC_BLOOD_PRESSURE = 3ce93694-26fe-102b-80cb-0017a47871b2
+SYSTOLIC_BLOOD_PRESSURE = 3ce934fa-26fe-102b-80cb-0017a47871b2
+PULSE = 3ce93824-26fe-102b-80cb-0017a47871b2
+GENITAL_EXAMINATION = ff43b70e-a473-4362-bf44-ee5ee6752283
+ABNORMAL = 3cd75230-26fe-102b-80cb-0017a47871b2
+IS_BABY_MOVING = 8fee5c07-bcea-491f-aea8-40d5d5c35b97
+DOES_FUNDAL_HEIGHT_MATCH_GESTATIONAL_AGE = 6a87ca6c-f2f8-4a81-aca4-77bba3a70901
+FETAL_POSITION = 370efbe9-f916-425c-9d3e-8dd1c747be3e
+FETAL_HEART = 03970ffd-0748-4233-a75d-f16e4ac5f297
+RESPIRATION_MOVEMENTS = 2d890d78-0dfc-4e83-88c2-721cbe953940
+FETAL_TONE = bea1ca18-af98-4f02-9e4d-a759d1329b3a
+WHICH_TETANUS_WAS_GIVEN_AT_THIS_VISIT = 8f0af50f-6116-4fac-9980-670b20bd3ec5
+LUNGS = 0f736975-e6c8-4c3f-a7b9-c6bceabbae80
+HEART = eee9d1b3-bb88-452e-a203-4100e8e25084
+RAPID_PLASMA_REAGENT = 3cdb36f2-26fe-102b-80cb-0017a47871b2
+RESULT_OF_HIV_TEST = 3ce17cec-26fe-102b-80cb-0017a47871b2
+BIRTH_WEIGHT = 3cf15b3a-26fe-102b-80cb-0017a47871b2
+DATE_OF_BIRTH_BABY_ONE = 68709cc4-1f32-4699-952e-9a3f7fbd8ccb
+BIRTH_HEIGHT = 539c6cdb-d48b-4247-978a-f2f7ea404664
+MIDDLE_UPPER_ARM_CIRCUMFERENCE = 4326b04b-3158-417a-bb8d-ad022295b0f4
+MIDDLE_UPPER_ARM_CIRCUMFERENCE_LESS_THAN_TWENTY = 39261eb3-9502-46b2-94e2-de49e4bec100
+NUTRITIONAL_STATUS_ASSESSMENT = e438058c-e725-4ec1-a24c-fb052361516e
+HISTORY_OF_DELIVERY = 73de8b6f-7f08-491a-a33f-b482c5722bc3
+VAGINAL_BLEEDING =  0f3f27e8-949d-4ef3-9c1a-04cb2ac121ff
+CONVULSIONS = 3d553b5f-c0f9-475e-98b6-7608fcd23de5
+ECLAMPSIA_INVESTIGATION = d07a0585-adac-4d01-84ef-0045d6a19065
+DANGER_SIGNS_FROM_HISTORY = f7512e3b-136e-4aa9-9ec2-0ab2d30675fb
+APGAR = 65a1f0db-5d13-4b06-89f3-1aa31b61ef31
+DATE_STARTED_ON_KMC = c92ba433-a22f-4200-8bb3-6a1a764abdd7
+WEIGHT_STARTING_ON_KMC = b82e5ce8-bc46-43bb-a989-d9266c301313
+SERIOUS_PATOLOGIES = 9c0357d3-55de-46f9-8bcd-3548d4ff0252
+BLOOD_GROUP = 3ccf4090-26fe-102b-80cb-0017a47871b2
+HIV_RESULT = a0cbdacb-be3a-42bb-9ff9-a217b0a22312
+PARTNER_RESULT_OF_HIV_TEST = 34e08543-a000-4e8b-bd9c-435a1c15d1c2
+
+		</defaultValue>
+		<description>
+			paste in a properties text file containing key, and local ID for objects.  For more explanation,
+			see the ConceptDictionary class of this module.
+		</description>
+	</globalProperty>
+	
+	<!--  Message Properties -->
+	<messages>
+		<lang>en</lang>
+		<file>messages.properties</file>
+	</messages>
+	
+</module>

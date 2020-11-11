@@ -1,0 +1,74 @@
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<div id="allergies"> <!-- ALLERGIES ET EFFETS SECONDAIRES -->
+		<table class="section-table">
+			<thead>
+				<tr>
+					<th colspan="5">ALLERGIES ET EFFETS SECONDAIRES</th>
+				</tr>
+				<tr>
+					<th scope="col" id="col-allergies-emr-1" class="section-emr">EMR</th>
+					<th scope="col" id="col-allergies-view" class="view-row">View</th>
+					<th scope="col" id="col-allergies-date">Date</th>
+					<th scope="col" id="col-allergies-med">Médicament soupconé</th>					
+					<th scope="col" id="col-allergies-effect">Effet</th>
+					<th scope="col" id="col-allergies-measures">Mesures prises</th>
+				</tr>
+			</thead>
+			<tbody>
+			    <c:set var="shownAllergy" value=""/>
+				<c:forEach var="allergy" items="${formData.obsMapper.allergies}">
+					<c:if test="${!allergy.doNotShow}">
+					<tr <c:if test="${not allergy.emr}">class="empty-row"</c:if>>
+						<td class="section-emr"><c:if test="${allergy.emr}">&#x2713;</c:if></td>
+						<td class="view-row" align="center">
+							<c:if test="${allergy.encounter != null}">
+							<a href="javascript:void(0)" onClick="showEntryAppendPopup('Allergy', ${formData.allergyFormId}, ${allergy.encounter.encounterId}); return false;">
+								<img src="${pageContext.request.contextPath}/images/file.gif" title="<spring:message code="general.view"/>" border="0" align="top" />
+							</a>
+							<c:set var="shownAllergy" value="${shownAllergy},${allergy.encounter.encounterId}"/>
+							</c:if>
+						</td>
+						<td>
+							<span class="value-date">
+								<c:choose><c:when test="${allergy.emr}">
+									<openmrs:formatDate date="${allergy.adverseEffectDate}" format="${FormatDate_General}"/></c:when>
+									<c:otherwise>${DateTextPlaceHolder}</c:otherwise>
+								</c:choose></span>
+						</td>
+						<td>
+							<span class="value-data">${allergy.medicationsString}</span>
+						</td>
+						<jsp:useBean id="allergy" type="org.openmrs.module.mch.mapper.Allergy" />
+						<c:if test="${formData.isAdult}">
+							<%@ include file="allergy_adult.jspf"%>
+						</c:if>
+						<c:if test="${formData.isPedi}">
+							<%@ include file="allergy_pedi.jspf"%>
+						</c:if>
+						
+					</tr>
+					</c:if>
+				</c:forEach>
+				<tr class="new-item-button-row">
+				    <td/>
+					<td colspan="4">
+						<button onClick="showEntryPopup('New Allergy', ${formData.allergyFormId}); return false;">Nouveau</button>	
+					<!--  	<c:if test="${!empty formData.encounterTypeEncs}"> 
+						 &nbsp;&nbsp;&nbsp;
+					       ajouter à encounter/append to encounter: 
+				            <select class="encounterSelect" onMouseUp="if ($j(this).val() != 0){showEntryAppendPopup('Allergy', ${formData.allergyFormId}, $j(this).val())}">
+							<option value="0"></option>
+							<c:forEach var="enc" items="${formData.encounterTypeEncs}">
+							    <c:if test="${fn:contains(shownAllergy, enc.encounterId) == false}">
+								<option value="${enc.encounterId}">
+									<openmrs:formatDate date="${enc.encounterDatetime}" format="dd/MM/yyyy"/> / ${enc.provider.familyName} ${enc.provider.givenName} / (${enc.location})
+								</option>
+								</c:if>	
+							</c:forEach>
+							</select>
+						</c:if>	-->
+					</td>
+				</tr>
+			</tbody>
+		</table>
+</div>

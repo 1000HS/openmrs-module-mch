@@ -1,0 +1,66 @@
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<div id="io"> <!-- INFECTIONS OPPORTUNISTES -->
+		<table class="section-table">
+			<thead>
+				<tr>
+					<th colspan="5">INFECTIONS OPPORTUNISTES</th>
+				</tr>
+				<tr>
+					<th scope="col" id="col-io-emr-1" class="section-emr">EMR</th>
+					<th scope="col" id="col-io-view" class="view-row">View</th>
+					<th scope="col" id="col-io-info">Diagnostic:</th>
+					<th scope="col" id="col-io-date">Date:</th>
+					<th scope="col" id="col-io-stage">Stade OMS:</th>
+					<th scope="col" id="col-io-comment">Commentaire</th>
+				</tr>
+			</thead>
+			<tbody>
+			    <c:set var="shownOI" value=""/>
+				<c:forEach var="oi" items="${formData.obsMapper.ois}">
+					<c:if test="${!oi.doNotShow}">
+						<tr <c:if test="${not oi.emr}">class="empty-row"</c:if>>
+							<td class="section-emr"><c:if test="${oi.emr}">&#x2713;</c:if></td>
+							<td class="view-row" align="center">
+								<c:if test="${oi.encounter != null}">
+								<a href="javascript:void(0)" onClick="showEntryAppendPopup('OI', ${formData.oppInfectionFormId}, ${oi.encounter.encounterId}); return false;">
+									<img src="${pageContext.request.contextPath}/images/file.gif" title="<spring:message code="general.view"/>" border="0" align="top" />
+								</a>
+								<c:set var="shownChronic" value="${shownOI},${oi.encounter.encounterId}"/>
+								</c:if>
+							</td>
+							<td>
+								<span class="value-data"><openmrs:format obsValue="${oi.diagnosis}"/></span>
+							</td>
+							<td>
+								<span class="value-date"><c:choose><c:when test="${oi.emr}"><openmrs:formatDate date="${oi.opportunisticInfectionDate}" format="${FormatDate_General}"/></c:when><c:otherwise>${DateTextPlaceHolder}</c:otherwise></c:choose></span>
+							</td>
+							<td><openmrs:format concept="${oi.stage}"/></td>
+							<td>
+								<span class="value-data"><c:if test="${oi.emr}">${oi.comments}</c:if></span>
+							</td>
+						</tr>
+					</c:if>	
+				</c:forEach>
+				<tr class="new-item-button-row">
+				    <td/>
+					<td colspan="4">
+						<button onClick="showEntryPopup('New OI', ${formData.oppInfectionFormId}); return false;">Nouveau</button>
+				<!--  		<c:if test="${!empty formData.encounterTypeEncs}">
+						   &nbsp;&nbsp;&nbsp;
+					       ajouter à encounter/append to encounter: 
+				            <select class="encounterSelect" onMouseUp="if ($j(this).val() != 0){showEntryAppendPopup('OI', ${formData.oppInfectionFormId}, $j(this).val())}">
+							<option value="0"></option>
+							<c:forEach var="enc" items="${formData.encounterTypeEncs}">
+							    <c:if test="${fn:contains(shownOI, enc.encounterId) == false}">
+								<option value="${enc.encounterId}">
+									<openmrs:formatDate date="${enc.encounterDatetime}" format="dd/MM/yyyy"/> / ${enc.provider.familyName} ${enc.provider.givenName} / (${enc.location})
+								</option>
+								</c:if>	
+							</c:forEach>
+							</select>
+						</c:if>	-->
+					</td>
+				</tr>
+			</tbody>
+		</table>
+</div>

@@ -1,0 +1,134 @@
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<div style="page-break-before: always" id="visits"> <!-- RESUME DES VISITES -->
+		<span class="form-header">RESUME DES VISITES</span>
+		<table class="section-table">
+			<thead>
+				<tr>
+					<th class="section-emr">EMR</th>
+					<th scope="col" class="view-row">View</th>
+					<th>Date de visite</th>
+					<th>Poids</th>
+					<th>Etat du patient</th>
+					<th>IO Actuelle?</th>
+					<th>IST Actuelle?</th>
+					<th>TB Screening</th>
+					<th>Contraception</th>
+					<th>Enceinte</th>
+					<th colspan="2">Adherence ARVs</th>
+					<th>Explication pour les doses manqués</th>
+					<th>Porchain RDV</th>
+				</tr>
+				<tr>
+					<th scope="col" id="col-visits-1" class="section-emr"></th>
+					<th scope="col" id="col-visits-view" class="view-row">&nbsp;</th>
+					<th scope="col" id="col-visits-2">jj/mm/aaaa</th>
+					<th scope="col" id="col-visits-3">(kg)</th>
+					<th scope="col" id="col-visits-4">A=activités normaux; B=effectue des activités avec aide; C=alités</th>
+					<th scope="col" id="col-visits-5">(si une nouvelle infection entrer dans le tableau au-dessus)</th>
+					<th scope="col" id="col-visits-6">(si oui voir codes en-dessous)</th>
+					<th scope="col" id="col-visits-7"></th>
+					<th scope="col" id="col-visits-8">A=Abstinence; C=condoms; PF=Planification familiale; R=rien</th>
+					<th scope="col" id="col-visits-9">Oui/Non</th>
+					<th scope="col" id="col-visits-10"># de doses manqués/30jrs</th>
+					<th scope="col" id="col-visits-11">&lt;3 = &gt;95% = Tres bon<br>4-8= 85-94% = bon<br>&gt;9= &lt;85% = Faible</th>
+					<th scope="col" id="col-visits-12">(codes en-dessous)</th>
+					<th scope="col" id="col-visits-13"></th>
+				</tr>
+			</thead>
+			<tfoot>
+				<tr>
+					<td colspan="14">
+						CODES IST: EU=Ecoulement urétral; EV = Ecoulement Vaginal; UG=Ulcérations génitales ; DPF = Douleurs pelviennes chez la femme ; BI= Bubon Inguinal ; GDS= Gonflement douloureux du scrotum ; VV= Végétations Vénériennes ; CNN= Conjonctivite purulente du nouveau né.
+						<br/>
+						CODES pour dose explication de doses manquées : 1. Toxicité-Effets secondaires ; 2. Grossesse ; 3. Faible adhésion ; 4.Maladie/hospitalisation ; 5. Rupture de stock ; 6.Autres
+					</td>
+				</tr>
+			</tfoot>
+			<tbody>
+			    <c:set var="shownAdultVisits" value=""/>
+				<c:forEach var="visitRow" items="${formData.obsMapper.visitsAdult}">
+					<jsp:useBean id="visitRow" type="org.openmrs.module.mch.mapper.VisitGroup" />
+					<tr <c:if test="${not visitRow.emr}">class="empty-row"</c:if>>
+						<td class="section-emr"><c:if test="${visitRow.emr}">&#x2713;</c:if></td>
+						<td class="view-row" align="center">
+							<c:if test="${visitRow.encounter != null}">
+							<a href="javascript:void(0)" onClick="showEntryAppendPopup('Adult Visit', ${formData.visitFormId}, ${visitRow.encounter.encounterId}); return false;">
+								<img src="${pageContext.request.contextPath}/images/file.gif" title="<spring:message code="general.view"/>" border="0" align="top" />
+							</a>
+							<c:set var="shownAdultVisits" value="${shownAdultVisits},${visitRow.encounter.encounterId}"/>
+							</c:if>
+						</td>
+						<td><span class="value-date"><c:choose><c:when test="${visitRow.emr}"><openmrs:formatDate date="${visitRow.date}" format="${FormatDate_General}"/></c:when><c:otherwise>${DateTextPlaceHolder}</c:otherwise></c:choose></span></td>
+						<td><span class="value-data"><openmrs:format obsValue="${visitRow.weight}"/></span></td>
+						<td><span class="value-data">${visitRow.functionalAbilityOfThePatientString}</span></td>
+						<c:choose><c:when test="${visitRow.emr}">
+						<td>
+							<%= UIHelper.getCheckBoxWidget(visitRow.isOpportunisticInfectionFalse(), "Non") %>
+							<br /> 
+							<%= UIHelper.getCheckBoxWidget(visitRow.isOpportunisticInfectionTrue(), "Oui: ") %>
+							<c:if test="${!empty visitRow.opportunisticInfectionForDisplay}">
+								<br/><span class="value-data">${visitRow.opportunisticInfectionForDisplay}</span>
+							</c:if>
+						</td>
+						<td>
+							<%= UIHelper.getCheckBoxWidget(visitRow.isStiFalse(), "Non") %> 
+							<br />
+							<%= UIHelper.getCheckBoxWidget(visitRow.isStiTrue(), "Oui: ") %>
+							<c:if test="${!empty visitRow.stiInfectionForDisplay}">
+								<br/><span class="value-data">${visitRow.stiInfectionForDisplay}</span>
+							</c:if>
+						</td>
+						</c:when>
+						<c:otherwise>
+						<td>
+							<%= UIHelper.getCheckBoxWidget(false, "Non") %> 
+							<br />
+							<%= UIHelper.getCheckBoxWidget(false, "Oui: ") %>
+						</td>
+						<td>
+							<%= UIHelper.getCheckBoxWidget(false, "Non") %> 
+							<br />
+							<%= UIHelper.getCheckBoxWidget(false, "Oui: ") %>
+						</td>
+						</c:otherwise>
+						</c:choose>
+						<td>
+							<%= UIHelper.getCheckBoxWidget(visitRow.isTBScreeningPositive(), "Pos") %> 
+							<br />
+							<%= UIHelper.getCheckBoxWidget(visitRow.isTBScreeningNegative(), "Neg") %>
+						</td>
+						<td><span class="value-data"> ${visitRow.familyPlanningString} </span></td>
+						<td>
+							<%= UIHelper.getCheckBoxWidget(visitRow.isPregnancyStatusNo(), "Non") %>
+							<br /> 
+							<%= UIHelper.getCheckBoxWidget(visitRow.isPregnancyStatusYes(), "Oui") %>
+						</td>
+						<td><span class="value-data"><openmrs:format obsValue="${visitRow.numberOfMissedDosesInThePastMonth}"/></span></td>
+						<td><span class="value-data">${visitRow.numberOfMissedDosesInThePastMonthString}</span></td>
+						<td><span class="value-data"><openmrs:format obsValue="${visitRow.reasonForPoorAdherenceToAntiRetoroviralTherapy}"/></span></td>
+						<td><span class="value-data"><openmrs:format obsValue="${visitRow.nextVisit}"/></span></td>
+					</tr>
+				</c:forEach>
+				<tr class="new-item-button-row">
+				    <td/>
+					<td colspan="12">
+						<button onClick="showEntryPopup('New Visit', ${formData.visitFormId}); return false;">Nouveau</button>
+			<!--  		<c:if test="${!empty formData.encounterTypeEncs}">
+						&nbsp;&nbsp;&nbsp;
+							ajouter à encounter/append to encounter: 
+				            <select class="encounterSelect" onMouseUp="if ($j(this).val() != 0){showEntryAppendPopup('Adult Visit', ${formData.visitFormId}, $j(this).val())}">
+							<option value="0"></option>
+							<c:forEach var="enc" items="${formData.encounterTypeEncs}">
+							    <c:if test="${fn:contains(shownAdultVisits, enc.encounterId) == false}">
+								<option value="${enc.encounterId}">
+									<openmrs:formatDate date="${enc.encounterDatetime}" format="dd/MM/yyyy"/> / ${enc.provider.familyName} ${enc.provider.givenName} / (${enc.location})
+								</option>	
+								</c:if>
+							</c:forEach>
+							</select>
+						</c:if>	-->	
+					</td>
+				</tr>
+			</tbody>
+		</table>
+</div>

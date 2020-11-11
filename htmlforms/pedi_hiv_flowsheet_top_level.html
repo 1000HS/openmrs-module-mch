@@ -1,0 +1,130 @@
+<htmlform>
+
+<style>
+		.formName { background-color:#e0e0ff; }
+		.section { border: 1px
+		solid #8FABC7; width:99%; height:100%; padding:2px; text-align:left;
+		margin-bottom:10px; }
+		.sectionHeader { background-color: #8FABC7;
+		color: white; display: block; padding: 2px; font-weight:bold; }
+		.note {color:red;}
+		.important {color:red; font-weight:bold;}
+		.notEntered {color:gray; font-weight:bold; font-style:italic}
+		td
+		{vertical-align:top;}
+		table.labTable td { color:red; }
+		table.labTable
+		td.dateField { text-align:right; }
+		table.identifierTable td
+		{padding-right:10px;}
+		div.paddedTable span {padding-right:20px;}
+	</style>
+
+
+<table>
+	<th>FICHE RESUMEE DU PATIENT VIH + (Enfant < 15 ans)</th>
+	<tr>
+		<td>
+		NOM: <lookup class="value" expression="patient.personName.familyName" />  
+		PRENOM: <lookup class="value" expression="patient.personName.givenName" />
+		TRACnet#: <lookup class="value"
+						expression="patientIdentifiers.get(&quot;TRACnet ID&quot;)" />
+		Nom del la FOSA: <encounterLocation />
+		</td>
+	</tr>
+	<tr>
+		<td>
+		Date de naissance: <lookup expression="patient.birthdate" class="value"/>
+	    Date d'enrolment: <encounterDate default="today"/>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		Date debut ARV: <obs conceptId="2516"/>
+		Date du diagnostic positif <obs conceptId="2515">
+		</td>
+	</tr>
+</table>	
+
+<section headerLabel="TRAITEMENT ANTIRETROVIRAUX POUR TOUTE LA VIE">
+	<table border="1" width="100%">
+		<tr>
+			<td>
+				<font class="notEntered">This section is not entered into EMR at this time.</font>
+			</td>
+		</tr>
+	</table>
+</section>
+
+<section headerLabel="TRAITEMENT ANTITUBERCULEUX">
+	<table border="1" width="100%">
+		<tr>
+			<td>
+				<font class="notEntered">This section is not entered into EMR at this time.</font>
+			</td>
+		</tr>
+	</table>
+</section>
+
+<section headerLabel="TRAITEMENT PROPHYLACTIQUE">
+	<table border="1" width="100%">
+		<tr>
+			<td>
+				<font class="notEntered">This section is not entered into EMR at this time.</font>
+			</td>
+		</tr>
+	</table>
+</section>
+
+<section headerLabel="AUTRES MEDICAMENTS PRIS CHRONIQUEMENT > 1 MOIS">
+	<table border="1" width="100%">
+		<tr>
+			<td>
+				<font class="notEntered">This section is not entered into EMR at this time.</font>
+			</td>
+		</tr>
+	</table>
+</section>
+
+<section headerLabel="ALLERGIES ET EFFECTS SECONDAIRES">
+	<htmlformflowsheet formId="94" />
+</section>
+
+<section headerLabel="HOSPITALISATIONS:">
+	<htmlformflowsheet formId="95" />
+</section>
+
+<section headerLabel="INFECTIONS OPPORTUNISTES">
+	<htmlformflowsheet formId="96" />
+</section>
+
+<section headerLabel="Diagnostic:">
+	<htmlformflowsheet formId="97" />
+</section>
+
+<section headerLabel="RESUME DES VISITES">
+	<htmlformflowsheet formId="102" />
+</section>
+
+<section headerLabel="SUIVI BIOLOGIQUE">
+	<htmlformflowsheet formId="99" />
+</section>
+
+<section headerLabel="SUIVI IMAGERIE">
+	<htmlformflowsheet formId="98" />
+</section>
+
+<br />
+	<section>
+		Nom/ Signature:
+		<encounterProvider role="HIV Patient Provider"/>
+		<br />
+	</section>
+	<br />
+	<center>
+		<submit submitLabel="Close Flowsheet" />
+	</center>
+	<br />
+<br />
+
+</htmlform>

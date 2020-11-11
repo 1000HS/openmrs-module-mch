@@ -1,0 +1,87 @@
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<div id="PNC">
+		<table class="section-table">
+			<tr>
+                <td colspan="8" style="background-color:#5c9ccc;color:white;"><center><b>NEO  Summary</b></center></td>
+                </tr>
+
+                <tr>
+                <td colspan="8">
+
+               <fieldset>
+                              <legend>What Form do you like to fill?</legend>
+
+
+
+                              <openmrs:globalProperty var="Form_Neo_admission" key="mch.Form_Neo_admission"  />
+                              <openmrs:globalProperty var="Form_Neo_admission_infant_bellow_1_month" key="mch.Form_Neo_admission_infant_bellow_1_month"  />
+                               <openmrs:globalProperty var="Form_Neo_daily_evaluation_and_orders" key="mch.Form_Neo_daily_evaluation_and_orders"  />
+                               <openmrs:globalProperty var="Form_Neo_nursing_assessment" key="mch.Form_Neo_nursing_assessment"  />
+                                <openmrs:globalProperty var="Form_Neo_Progress_note" key="mch.Form_Neo_Progress_note"  />
+                               <openmrs:globalProperty var="Form_Neo_education" key="mch.Form_Neo_education"  />
+
+
+                                                            <button onClick="showEntryPopup('Neo admission Form', ${Form_Neo_admission}); return false;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Admission &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                                            <button onClick="showEntryPopup('Neo admission infant bellow 1 month Form', ${Form_Neo_admission_infant_bellow_1_month}); return false;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Admission infant bellow 1 month &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                                            <button onClick="showEntryPopup('Neo daily evaluation and orders Form', ${Form_Neo_daily_evaluation_and_orders}); return false;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Daily evaluation and orders &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                                            <button onClick="showEntryPopup('Neo nursing assessment Form', ${Form_Neo_nursing_assessment}); return false;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Nursing assessment &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                                            <button onClick="showEntryPopup('Neo Progress note Form', ${Form_Neo_Progress_note}); return false;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Progress note &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                                            <button onClick="showEntryPopup('Neo education', ${Form_Neo_education}); return false;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Education &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+
+                            </fieldset>
+                </td>
+
+                </tr>
+                <tr>
+                <td colspan="8">
+
+                 <openmrs:globalProperty var="maxEncs" key="dashboard.encounters.maximumNumberToShow" defaultValue="" />
+
+                    <openmrs:portlet url="ancPatientEncounters" id="ancPatientEncountersID" moduleId="mch" patientId="${patient.patientId}" parameters="num=${maxEncs}|showPagination=true" />
+
+
+                </td>
+
+                </tr>
+                <!-- <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                </tr>
+                <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                </tr>
+                <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                </tr>
+                <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                </tr> -->
+                </table>
+
+
+
+
+           </div>

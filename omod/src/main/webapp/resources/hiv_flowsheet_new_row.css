@@ -1,0 +1,43 @@
+	.formName {
+		background-color: #e0e0ff;
+	}
+	
+	.section {
+		border: 1px solid #8FABC7;
+		width: 99%;
+		padding: 2px;
+		text-align: left;
+		margin-bottom: 10px;
+	}
+	
+	.sectionHeader {
+		background-color: #8FABC7;
+		color: white;
+		display: block;
+		padding: 2px;
+		font-weight: bold;
+	}
+	
+	table.symptoms th {
+		text-align: right;
+	}
+	
+	.note {
+		color: red;
+	}
+	
+	table.labTable td {
+		color: red;
+	}
+	
+	table.labTable td.dateField {
+		text-align: right;
+	}
+	
+	table.identifierTable td {
+		padding-right: 10px;
+	}
+	
+	div.paddedTable span {
+		padding-right: 20px;
+	}

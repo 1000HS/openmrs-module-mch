@@ -1,0 +1,20 @@
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<div id="flowsheet-tabs">
+	<ul>
+			<li><a href="#ANC">ANC</a></li>
+            <li><a href="#INTRAPARTUM">INTRAPARTUM</a></li>
+            <li><a href="#NEO">NEO</a></li>
+            <li><a href="#PNC">PNC</a></li>
+            <li><a href="#KMC">KMC</a></li>
+            <li><a href="#EPI">EPI</a></li>
+            <li><a href="#IMNCI">IMNCI</a></li>
+            <li><a href="#ECD">ECD</a></li>
+            <li><a href="#ASRH">ASRH</a></li>
+            <li><a href="#GBV">GBV</a></li>
+            <li><a href="#FP">FP</a></li>
+            <li><a href="#GMP">GMP</a></li>
+            <li><a href="#NEWBORNT">NEW BORN Tr.</a></li>
+            <li><a href="#GRAPHS">GRAPHS</a></li>
+
+	</ul>
+

@@ -1,0 +1,423 @@
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<div id="EPI">
+		<table class="section-table">
+			<tr>
+                <td colspan="9" style="background-color:#5c9ccc;color:white;"><center><b>EPI Summary</b></center></td>
+                </tr>
+
+               <tr>
+                <td><b>Periodes/Vaccines</b> </td>
+                <td><b>BCG</b> </td>
+                <td><b>OPV</b> </td>
+                <td><b>IPV</b> </td>
+                <td><b>DTP-HepB-Hib</b> </td>
+                <td><b>Pneumococal</b> </td>
+                <td><b>Rota virus</b> </td>
+                <td><b>Measles and Rebella</b> </td>
+                <td><b>HPV</b> </td>
+                </tr>
+                <tr>
+                <td><b>At Birth</b> </td>
+                <td>
+                <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                     <c:if test="${vacrico.value.state.concept.id==106943 && vacrico.key.valueCoded.id==2194}">
+                                                <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                     </c:if>
+                </c:forEach>
+                </td>
+                <td>
+                <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                     <c:if test="${vacrico.value.state.concept.id==106943 && vacrico.key.valueCoded.id==106923}">
+                                                <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                     </c:if>
+                </c:forEach>
+                </td>
+                <td>
+                <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                     <c:if test="${vacrico.value.state.concept.id==106943 && vacrico.key.valueCoded.id==782}">
+                                                <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                     </c:if>
+                </c:forEach>
+                </td>
+                <td>
+                <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                     <c:if test="${vacrico.value.state.concept.id==106943 && vacrico.key.valueCoded.id==106839}">
+                                                <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                     </c:if>
+                </c:forEach>
+                </td>
+                <td>
+                <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                     <c:if test="${vacrico.value.state.concept.id==106943 && vacrico.key.valueCoded.id==6645}">
+                                                <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                     </c:if>
+                </c:forEach>
+                </td>
+                <td>
+                <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                     <c:if test="${vacrico.value.state.concept.id==106943 && vacrico.key.valueCoded.id==105727}">
+                                                <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                     </c:if>
+                </c:forEach>
+                </td>
+                <td>
+                <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                     <c:if test="${vacrico.value.state.concept.id==106943 && vacrico.key.valueCoded.id==106853}">
+                                                <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                     </c:if>
+                </c:forEach>
+                </td>
+                <td></td>
+                </tr>
+                <tr>
+                <td><b>Six weeks</b> </td>
+                <td>
+                                <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                     <c:if test="${vacrico.value.state.concept.id==106944 && vacrico.key.valueCoded.id==2194}">
+                                                                <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                     </c:if>
+                                </c:forEach>
+                                </td>
+                                <td>
+                                <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                     <c:if test="${vacrico.value.state.concept.id==106944 && vacrico.key.valueCoded.id==106923}">
+                                                                <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                     </c:if>
+                                </c:forEach>
+                                </td>
+                                <td>
+                                <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                     <c:if test="${vacrico.value.state.concept.id==106944 && vacrico.key.valueCoded.id==782}">
+                                                                <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                     </c:if>
+                                </c:forEach>
+                                </td>
+                                <td>
+                                <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                     <c:if test="${vacrico.value.state.concept.id==106944 && vacrico.key.valueCoded.id==106839}">
+                                                                <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                     </c:if>
+                                </c:forEach>
+                                </td>
+                                <td>
+                                <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                     <c:if test="${vacrico.value.state.concept.id==106944 && vacrico.key.valueCoded.id==6645}">
+                                                                <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                     </c:if>
+                                </c:forEach>
+                                </td>
+                                <td>
+                                <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                     <c:if test="${vacrico.value.state.concept.id==106944 && vacrico.key.valueCoded.id==105727}">
+                                                                <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                     </c:if>
+                                </c:forEach>
+                                </td>
+                                <td>
+                                <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                     <c:if test="${vacrico.value.state.concept.id==106944 && vacrico.key.valueCoded.id==106853}">
+                                                                <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                     </c:if>
+                                </c:forEach>
+                                </td>
+                <td></td>
+                </tr>
+                <tr>
+                <td><b>Ten weeks</b> </td>
+                <td>
+                                                <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                                     <c:if test="${vacrico.value.state.concept.id==106945 && vacrico.key.valueCoded.id==2194}">
+                                                                                <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                                     </c:if>
+                                                </c:forEach>
+                                                </td>
+                                                <td>
+                                                <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                                     <c:if test="${vacrico.value.state.concept.id==106945 && vacrico.key.valueCoded.id==106923}">
+                                                                                <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                                     </c:if>
+                                                </c:forEach>
+                                                </td>
+                                                <td>
+                                                <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                                     <c:if test="${vacrico.value.state.concept.id==106945 && vacrico.key.valueCoded.id==782}">
+                                                                                <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                                     </c:if>
+                                                </c:forEach>
+                                                </td>
+                                                <td>
+                                                <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                                     <c:if test="${vacrico.value.state.concept.id==106945 && vacrico.key.valueCoded.id==106839}">
+                                                                                <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                                     </c:if>
+                                                </c:forEach>
+                                                </td>
+                                                <td>
+                                                <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                                     <c:if test="${vacrico.value.state.concept.id==106945 && vacrico.key.valueCoded.id==6645}">
+                                                                                <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                                     </c:if>
+                                                </c:forEach>
+                                                </td>
+                                                <td>
+                                                <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                                     <c:if test="${vacrico.value.state.concept.id==106945 && vacrico.key.valueCoded.id==105727}">
+                                                                                <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                                     </c:if>
+                                                </c:forEach>
+                                                </td>
+                                                <td>
+                                                <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                                     <c:if test="${vacrico.value.state.concept.id==106945 && vacrico.key.valueCoded.id==106853}">
+                                                                                <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                                     </c:if>
+                                                </c:forEach>
+                                                </td>
+                                <td></td>
+                </tr>
+                <tr>
+                <td><b>Fourteen weeks</b> </td>
+<td>
+                                <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                     <c:if test="${vacrico.value.state.concept.id==106946 && vacrico.key.valueCoded.id==2194}">
+                                                                <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                     </c:if>
+                                </c:forEach>
+                                </td>
+                                <td>
+                                <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                     <c:if test="${vacrico.value.state.concept.id==106946 && vacrico.key.valueCoded.id==106923}">
+                                                                <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                     </c:if>
+                                </c:forEach>
+                                </td>
+                                <td>
+                                <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                     <c:if test="${vacrico.value.state.concept.id==106946 && vacrico.key.valueCoded.id==782}">
+                                                                <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                     </c:if>
+                                </c:forEach>
+                                </td>
+                                <td>
+                                <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                     <c:if test="${vacrico.value.state.concept.id==106946 && vacrico.key.valueCoded.id==106839}">
+                                                                <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                     </c:if>
+                                </c:forEach>
+                                </td>
+                                <td>
+                                <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                     <c:if test="${vacrico.value.state.concept.id==106946 && vacrico.key.valueCoded.id==6645}">
+                                                                <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                     </c:if>
+                                </c:forEach>
+                                </td>
+                                <td>
+                                <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                     <c:if test="${vacrico.value.state.concept.id==106946 && vacrico.key.valueCoded.id==105727}">
+                                                                <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                     </c:if>
+                                </c:forEach>
+                                </td>
+                                <td>
+                                <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                     <c:if test="${vacrico.value.state.concept.id==106946 && vacrico.key.valueCoded.id==106853}">
+                                                                <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                     </c:if>
+                                </c:forEach>
+                                </td>
+                <td></td>
+                </tr>
+                <tr>
+                <td><b>Nine months</b> </td>
+                <td>
+                                   <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                        <c:if test="${vacrico.value.state.concept.id==106947 && vacrico.key.valueCoded.id==2194}">
+                                                                   <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                        </c:if>
+                                   </c:forEach>
+                                   </td>
+                                   <td>
+                                   <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                        <c:if test="${vacrico.value.state.concept.id==106947 && vacrico.key.valueCoded.id==106923}">
+                                                                   <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                        </c:if>
+                                   </c:forEach>
+                                   </td>
+                                   <td>
+                                   <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                        <c:if test="${vacrico.value.state.concept.id==106947 && vacrico.key.valueCoded.id==782}">
+                                                                   <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                        </c:if>
+                                   </c:forEach>
+                                   </td>
+                                   <td>
+                                   <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                        <c:if test="${vacrico.value.state.concept.id==106947 && vacrico.key.valueCoded.id==106839}">
+                                                                   <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                        </c:if>
+                                   </c:forEach>
+                                   </td>
+                                   <td>
+                                   <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                        <c:if test="${vacrico.value.state.concept.id==106947 && vacrico.key.valueCoded.id==6645}">
+                                                                   <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                        </c:if>
+                                   </c:forEach>
+                                   </td>
+                                   <td>
+                                   <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                        <c:if test="${vacrico.value.state.concept.id==106947 && vacrico.key.valueCoded.id==105727}">
+                                                                   <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                        </c:if>
+                                   </c:forEach>
+                                   </td>
+                                   <td>
+                                   <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                        <c:if test="${vacrico.value.state.concept.id==106947 && vacrico.key.valueCoded.id==106853}">
+                                                                   <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                        </c:if>
+                                   </c:forEach>
+                                   </td>
+                   <td></td>
+                </tr>
+                <tr>
+                <td><b>Fifteen months</b> </td>
+                <td>
+                                   <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                        <c:if test="${vacrico.value.state.concept.id==106948 && vacrico.key.valueCoded.id==2194}">
+                                                                   <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                        </c:if>
+                                   </c:forEach>
+                                   </td>
+                                   <td>
+                                   <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                        <c:if test="${vacrico.value.state.concept.id==106948 && vacrico.key.valueCoded.id==106923}">
+                                                                   <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                        </c:if>
+                                   </c:forEach>
+                                   </td>
+                                   <td>
+                                   <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                        <c:if test="${vacrico.value.state.concept.id==106948 && vacrico.key.valueCoded.id==782}">
+                                                                   <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                        </c:if>
+                                   </c:forEach>
+                                   </td>
+                                   <td>
+                                   <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                        <c:if test="${vacrico.value.state.concept.id==106948 && vacrico.key.valueCoded.id==106839}">
+                                                                   <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                        </c:if>
+                                   </c:forEach>
+                                   </td>
+                                   <td>
+                                   <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                        <c:if test="${vacrico.value.state.concept.id==106948 && vacrico.key.valueCoded.id==6645}">
+                                                                   <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                        </c:if>
+                                   </c:forEach>
+                                   </td>
+                                   <td>
+                                   <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                        <c:if test="${vacrico.value.state.concept.id==106948 && vacrico.key.valueCoded.id==105727}">
+                                                                   <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                        </c:if>
+                                   </c:forEach>
+                                   </td>
+                                   <td>
+                                   <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                        <c:if test="${vacrico.value.state.concept.id==106948 && vacrico.key.valueCoded.id==106853}">
+                                                                   <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                        </c:if>
+                                   </c:forEach>
+                                   </td>
+                   <td></td>
+                </tr>
+                <tr>
+                <td><b>Twelve years</b> </td>
+                <td>
+                                    <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                         <c:if test="${vacrico.value.state.concept.id==106949 && vacrico.key.valueCoded.id==2194}">
+                                                                    <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                         </c:if>
+                                    </c:forEach>
+                                    </td>
+                                    <td>
+                                    <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                         <c:if test="${vacrico.value.state.concept.id==106949 && vacrico.key.valueCoded.id==106923}">
+                                                                    <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                         </c:if>
+                                    </c:forEach>
+                                    </td>
+                                    <td>
+                                    <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                         <c:if test="${vacrico.value.state.concept.id==106949 && vacrico.key.valueCoded.id==782}">
+                                                                    <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                         </c:if>
+                                    </c:forEach>
+                                    </td>
+                                    <td>
+                                    <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                         <c:if test="${vacrico.value.state.concept.id==106949 && vacrico.key.valueCoded.id==106839}">
+                                                                    <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                         </c:if>
+                                    </c:forEach>
+                                    </td>
+                                    <td>
+                                    <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                         <c:if test="${vacrico.value.state.concept.id==106949 && vacrico.key.valueCoded.id==6645}">
+                                                                    <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                         </c:if>
+                                    </c:forEach>
+                                    </td>
+                                    <td>
+                                    <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                         <c:if test="${vacrico.value.state.concept.id==106949 && vacrico.key.valueCoded.id==105727}">
+                                                                    <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                         </c:if>
+                                    </c:forEach>
+                                    </td>
+                                    <td>
+                                    <c:forEach var="vacrico" items="${formData.epiVaccinesRecord}">
+                                         <c:if test="${vacrico.value.state.concept.id==106949 && vacrico.key.valueCoded.id==106853}">
+                                                                    <span class="value-date"><openmrs:formatDate date="${vacrico.key.obsDatetime}" format="${FormatDate_General}"/></span>
+                                         </c:if>
+                                    </c:forEach>
+                                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                <td colspan="9">
+
+                 <fieldset>
+                              <legend>What Form do you like to fill?</legend>
+
+                             <openmrs:globalProperty var="EPIVaccinationRecordsFormId" key="mch.EPI_Vaccination_Records"  />
+                              <openmrs:globalProperty var="EPIExaminationFormId" key="mch.EPI_Examination"  />
+
+                               <button onClick="showEntryPopup('EPI Vaccination Records Form', ${EPIVaccinationRecordsFormId}); return false;" style="font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vaccination Records &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                               <button onClick="showEntryPopup('EPI Examination Form', ${EPIExaminationFormId}); return false;" style="font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Examination &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+
+                              </fieldset>
+
+                </td>
+
+                </tr>
+                <tr>
+                <td colspan="9">
+
+                 <openmrs:globalProperty var="maxEncs" key="dashboard.encounters.maximumNumberToShow" defaultValue="" />
+
+                            <openmrs:portlet url="ancPatientEncounters" id="ancPatientEncountersID" moduleId="mch" patientId="${patient.patientId}" parameters="num=${maxEncs}|showPagination=true" />
+
+
+                </td>
+
+                </tr>
+                </table>
+
+
+
+
+           </div>

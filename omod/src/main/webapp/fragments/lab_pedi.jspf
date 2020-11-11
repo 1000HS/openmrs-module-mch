@@ -1,0 +1,86 @@
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<div id="labs"> <!-- SUIVI BIOLOGIQUE -->
+		<table class="section-table">
+			<thead>
+				<tr>
+					<th colspan="17">SUIVI BIOLOGIQUE</th>
+				</tr>
+				<tr>
+					<th scope="col" id="col-labs-1" class="section-emr">EMR</th>
+					<th scope="col" id="col-labs-view" class="view-row">View</th>
+					<th scope="col" id="col-labs-2">Date d’examen</th>
+					<th scope="col" id="col-labs-3">Hb<br/>(g/dl)</th>
+					<th scope="col" id="col-labs-4">Ht<br/>(%)</th>
+					<th scope="col" id="col-labs-5">GB<br/>(x10<sup>9</sup>/l)</th>
+					<th scope="col" id="col-labs-6">Neutro<br/>(x10<sup>9</sup>/l)</th>
+					<th scope="col" id="col-labs-7">Lympho<br/>(x10<sup>9</sup>/l)</th>
+					<th scope="col" id="col-labs-8">Plt<br/>(x10<sup>9</sup>/l)</th>
+					<th scope="col" id="col-labs-9">SGOT<br/>(iu/l)</th>
+					<th scope="col" id="col-labs-10">SGPT<br/>(iu/l)</th>
+					<th scope="col" id="col-labs-11">Creat.<br/>(µmol./l)</th>
+					<th scope="col" id="col-labs-11">Clairance<br/>de la<br/>Creat.</th>
+					<th scope="col" id="col-labs-12">Glucose<br/>(mg/dl)</th>
+					<th scope="col" id="col-labs-13">Autre<br/>examen</th>
+					<th scope="col" id="col-labs-14">CD4 (cells/mm<sup>3</sup>)</th>
+					<th scope="col" id="col-labs-15">CD4% </th>
+					<th scope="col" id="col-labs-16">Charge Virale<br/>(copies/ml)</th>
+				</tr>
+			</thead>
+			<tbody>
+			    <c:set var="shownLab" value=""/>
+				<c:forEach var="labRow" items="${formData.obsMapper.labsTablePedi}">
+					<tr <c:if test="${not labRow.emr}">class="empty-row"</c:if>>
+						<td class="section-emr"><c:if test="${labRow.emr}">&#x2713;</c:if></td>
+						<td class="view-row" align="center">
+							<c:if test="${labRow.encounter != null}">
+							<a href="javascript:void(0)" onClick="showEntryAppendPopup('Lab Results', ${formData.labFormId}, ${labRow.encounter.encounterId}); return false;">
+								<img src="${pageContext.request.contextPath}/images/file.gif" title="<spring:message code="general.view"/>" border="0" align="top" />
+							</a>
+							<c:set var="shownLab" value="${shownLab},${labRow.encounter.encounterId}"/>
+							</c:if>
+						</td>
+						<td><span class="value-date"><c:choose><c:when test="${labRow.emr}"><openmrs:formatDate date="${labRow.date}" format="${FormatDate_General}"/></c:when><c:otherwise>${DateTextPlaceHolder}</c:otherwise></c:choose></span></td>
+						<td><span class="value-data"><openmrs:format obsValue="${labRow.hb}"/></span></td>
+						<td><span class="value-data"><openmrs:format obsValue="${labRow.ht}"/></span></td>
+						<td><span class="value-data"><openmrs:format obsValue="${labRow.gb}"/></span></td>
+						<td><span class="value-data"><openmrs:format obsValue="${labRow.neutro}"/></span></td>
+						<td><span class="value-data"><openmrs:format obsValue="${labRow.lympho}"/></span></td>
+						<td><span class="value-data"><openmrs:format obsValue="${labRow.plt}"/></span></td>
+						<td><span class="value-data"><openmrs:format obsValue="${labRow.sgot}"/></span></td>
+						<td><span class="value-data"><openmrs:format obsValue="${labRow.sgpt}"/></span></td>
+						<td><span class="value-data"><openmrs:format obsValue="${labRow.creat}"/></span></td>
+
+						<td><span class="value-data"><openmrs:format obsValue="${labRow.creatClearence}"/></span></td>
+
+						<td><span class="value-data"><openmrs:format obsValue="${labRow.glucose}"/></span></td>
+					
+						<td><span class="value-data">${labRow.otherTests}</span></td>
+						<td><span class="value-data"><openmrs:format obsValue="${labRow.cd4}"/></span></td>
+						<td><span class="value-data"><openmrs:format obsValue="${labRow.cd4Percentage}"/></span></td>
+						<td><span class="value-data"><c:choose><c:when test="${labRow.viralLoad != null && labRow.viralLoad.valueNumeric == 39.9}">&lt;40</c:when><c:otherwise><openmrs:format obsValue="${labRow.viralLoad}"/></c:otherwise></c:choose></span></td>
+					</tr>
+				</c:forEach>
+				<tr class="new-item-button-row">
+					<td/>
+					<td colspan="17">
+						<button onClick="showEntryPopup('New Lab', ${formData.labFormId}); return false;">Nouveau</button>
+				<!-- 	<c:if test="${!empty formData.encounterTypeEncs}">
+						&nbsp;&nbsp;&nbsp;
+							ajouter à encounter/append to encounter: 
+				            <select class="encounterSelect" onMouseUp="if ($j(this).val() != 0){showEntryAppendPopup('Lab Results', ${formData.labFormId}, $j(this).val())}">
+							<option value="0"></option>
+							<c:forEach var="enc" items="${formData.encounterTypeEncs}">
+							    <c:if test="${fn:contains(shownLab, enc.encounterId) == false}">
+								<option value="${enc.encounterId}">
+									<openmrs:formatDate date="${enc.encounterDatetime}" format="dd/MM/yyyy"/> / ${enc.provider.familyName} ${enc.provider.givenName} / (${enc.location})
+								</option>	
+								</c:if>
+							</c:forEach>
+							</select>
+						</c:if>	 -->	
+					</td>
+				</tr>
+			</tbody>
+			
+		</table>
+</div>

@@ -1,0 +1,198 @@
+* { margin:0px; padding: 0px; font-size: 12px; }
+
+td, th {
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	background: #fff
+}
+
+div#header	{ display: none; 	}
+div#footer	{ display: none; 	}
+div#content	{ padding: 5px; 	}
+
+div#form-header-section { margin-bottom: 10px; }
+		
+.value-label	{ font-weight: bold; }
+.value-data 	{ color: #2200FF; }
+.value-date 	{ color: #2200FF; }
+.value-calculated 	{ color: #5B1094; }
+
+.value-label-big { 
+					font-weight: bold;
+				 }
+.value-data-big  { 
+					color: #2200FF; 
+				 }
+		
+.checkbox-label {
+	padding-left: 3px;
+	padding-right: 5px;
+}
+
+.checkbox-box {
+	outline: 1px solid black;
+	width: 11px;
+	text-align: center;
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 9px;
+}
+
+.checkbox-box-ticked {
+	outline: 1px solid black;
+	width: 11px;
+	text-align: center;
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 9px;
+	color: #2200FF; 
+}
+
+.form-header {
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.section-table {
+	padding: 2px;
+	width: 100%;
+	margin-bottom: 30px;
+	border: 1px solid #CEDEEB;
+	border-spacing: 0px;
+	background:#DFEFFC;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px
+}
+
+.section-graph {
+	margin-bottom: 10px;
+}
+.ui-dialog{
+left: 42px !important;
+}
+	
+table.section-table th	{ background-color: #DFEFFC; border: 1px solid #CEDEEB; }
+table.section-table td	{ border: 1px solid #CEDEEB; }
+
+th.section-emr	{ display: none;	}
+td.section-emr	{ text-align: center; display: none;	}
+
+#col-arv-emr-1	{ font-weight: normal; width: 1%; display: none; }
+#col-arv-info	{ font-weight: bold; text-align: left;	width: 57%;	}
+#col-arv-emr-2	{ font-weight: normal; width: 1%; display: none; }
+#col-arv-stop	{ width: 41%;	}
+
+#col-tb-emr-1	{ font-weight: normal; width: 1%; display: none; }
+#col-tb-info	{ font-weight: bold; text-align: left;	width: 37%;	}
+#col-tb-emr-2	{ font-weight: normal; width: 1%; display: none; }
+#col-tb-phase	{ width: 10%;	}
+#col-tb-emr-3	{ font-weight: normal; width: 1%; display: none;}
+#col-tb-stop	{ width: 49%;	}
+
+#col-prophylactic-emr-1	{ font-weight: normal; width: 1%; display: none; }
+#col-prophylactic-info	{ font-weight: bold; text-align: left;	width: 49%;	}
+#col-prophylactic-emr-2	{ font-weight: normal; width: 1%; display: none; }
+#col-prophylactic-stop	{ width: 49%;	}
+
+#col-chronic-emr-1 { font-weight: normal; text-align: center; width: 1%; background-color: #FFFFFF; }
+#col-chronic-info { font-weight: normal; text-align: left; width: 31%; background-color: #FFFFFF; }
+#col-chronic-start-date { font-weight: normal; text-align: left; width: 18%; background-color: #FFFFFF; }
+#col-chronic-emr-2 { font-weight: normal; text-align: center; width: 1%; background-color: #FFFFFF;}
+#col-chronic-stop-date { font-weight: normal; text-align: left; width: 18%; background-color: #FFFFFF; }
+#col-chronic-stop-comment { font-weight: normal; text-align: left; width: 31%; background-color: #FFFFFF; }
+
+#col-allergies-emr-1 { font-weight: normal; text-align: center; width: 1%; background-color: #FFFFFF; }
+#col-allergies-view { font-weight: normal; text-align: center; width: 1%; background-color: #FFFFFF; }
+#col-allergies-date { font-weight: normal; text-align: left; width: 10%; background-color: #FFFFFF; }
+#col-allergies-med { font-weight: normal; text-align: left; width: 15%; background-color: #FFFFFF; }
+#col-allergies-effect { font-weight: normal; text-align: left; width: 57%; background-color: #FFFFFF; }
+#col-allergies-measures { font-weight: normal; text-align: left; width: 17%; background-color: #FFFFFF; }
+
+#col-hospital-emr-1 { font-weight: normal; text-align: center; width: 1%; background-color: #FFFFFF; }
+#col-hospital-view { font-weight: normal; text-align: center;width: 1%; background-color: #FFFFFF; }
+#col-hospital-diagnostic { font-weight: normal; text-align: left; width: 40%; background-color: #FFFFFF; }
+#col-hospital-date { font-weight: normal; text-align: left; width: 10%; background-color: #FFFFFF; }
+#col-hospital-duration { font-weight: normal; text-align: left; width: 22%; background-color: #FFFFFF; }
+#col-hospital-comment { font-weight: normal; text-align: left; width: 26%; background-color: #FFFFFF; }
+
+#col-io-emr-1 { font-weight: normal; text-align: center; width: 1%; background-color: #FFFFFF;}
+#col-io-view { font-weight: normal; text-align: center; width: 1%; background-color: #FFFFFF;}
+#col-io-info { font-weight: normal; text-align: left; width: 30%; background-color: #FFFFFF; }
+#col-io-date { font-weight: normal; text-align: left; width: 10%; background-color: #FFFFFF; }
+#col-io-stage { font-weight: normal; text-align: left; width: 29%; background-color: #FFFFFF; }
+#col-io-comment { font-weight: normal; text-align: left; width: 30%; background-color: #FFFFFF; }
+
+#col-misc-emr-1 { font-weight: normal; text-align: center; width: 1%; background-color: #FFFFFF; }
+#col-misc-view { font-weight: normal; text-align: center; width: 1%; background-color: #FFFFFF; }
+#col-misc-info { font-weight: normal; text-align: left; width: 60%; background-color: #FFFFFF; }
+#col-misc-date { font-weight: normal; text-align: left; width: 10%; background-color: #FFFFFF; }
+#col-misc-comment { font-weight: normal; text-align: left; width: 29%; background-color: #FFFFFF; }
+
+#col-visits-1 { font-weight: normal; text-align: center; width: 1%; background-color: #FFFFFF; }
+#col-visits-view { font-weight: normal; text-align: center; width: 1%; background-color: #FFFFFF; }
+#col-visits-2 { font-weight: normal; text-align: left; width: 10%; background-color: #FFFFFF; }
+#col-visits-3 { font-weight: normal; text-align: left; width: 8%; background-color: #FFFFFF; }
+#col-visits-4 { font-weight: normal; text-align: left; width: 9%; background-color: #FFFFFF; }
+#col-visits-5 { font-weight: normal; text-align: left; width: 9%; background-color: #FFFFFF; }
+#col-visits-6 { font-weight: normal; text-align: left; width: 9%; background-color: #FFFFFF; }
+#col-visits-7 { font-weight: normal; text-align: left; width: 9%; background-color: #FFFFFF; }
+#col-visits-8 { font-weight: normal; text-align: left; width: 9%; background-color: #FFFFFF; }
+#col-visits-9 { font-weight: normal; text-align: left; width: 9%; background-color: #FFFFFF; }
+#col-visits-10 { font-weight: normal; text-align: left; width: 9%; background-color: #FFFFFF; }
+#col-visits-11 { font-weight: normal; text-align: left; width: 9%; background-color: #FFFFFF; }
+#col-visits-12 { font-weight: normal; text-align: left; width: 9%; background-color: #FFFFFF; }
+#col-visits-13 { font-weight: normal; text-align: left; width: 9%; background-color: #FFFFFF; }
+#col-visits-14 { font-weight: normal; text-align: left; width: 9%; background-color: #FFFFFF; }
+#col-visits-15 { font-weight: normal; text-align: left; width: 9%; background-color: #FFFFFF; }
+
+#col-images-emr-1 { font-weight: normal; text-align: center; width: 1%; background-color: #FFFFFF; }
+#col-images-view { font-weight: normal; text-align: center; width: 1%; background-color: #FFFFFF; }
+#col-images-type { font-weight: normal; text-align: left; width: 44%; background-color: #FFFFFF; }
+#col-images-date { font-weight: normal; text-align: left; width: 10%; background-color: #FFFFFF; }
+#col-images-outcome { font-weight: normal; text-align: left; width: 45%; background-color: #FFFFFF; }
+
+.tickLabel { font-size: 8px; }
+
+.cd4Graph {	width: 900px; height: 600px; }
+.cd4PercentGraph {	width: 900px; height: 600px; }
+.heightForAge {	width: 900px; height: 600px; }
+.lengthForAge {	width: 900px; height: 600px; }
+.weightForAgeBirth {	width: 900px; height: 600px; }
+.weightForAge {	width: 900px; height: 600px; }
+.weightForAgeTotal {	width: 900px; height: 600px; }
+.heightForAgeTotal {	width: 900px; height: 600px; }
+.weightForLength {	width: 900px; height: 600px; }
+.weightForHeight {	width: 900px; height: 600px; }
+.bmiForAge {	width: 900px; height: 600px; }
+
+.bmiGraph {	width: 720px; height: 540px; }
+
+.viralLoadGraph {	width: 800px; height: 600px; }
+
+.note {	color: red; }
+
+.empty-row { display: none; }
+
+.graphs h1 { font-size: 20px; }
+
+/* Vertical Tabs */
+.ui-tabs-vertical { min-width:85.8em; border: solid thin green; padding: 0.3em; background: #5C9CCC; }
+.ui-tabs-vertical .ui-tabs-nav { padding: 0; float: left; width: 7em; background: #5C9CCC; border: none; }
+.ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0 -1px .2em 0; border: none; }
+.ui-tabs-vertical .ui-tabs-nav li a { display:block; }
+.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-selected { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; border-right-width: 1px; background: white; }
+.ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: left; width: 102em; background: white; -moz-border-radius-topright: 5px; }
+
+table.bmiLegend th, table.bmiLegend td {
+  font-size: 6px;
+  padding: 0px;
+  text-align: center;
+}
+
+table.bmiLegend th {
+  background: #C5DBEC;
+ }

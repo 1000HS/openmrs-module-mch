@@ -1,0 +1,73 @@
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<div id="images"> <!-- SUIVI IMAGERIE -->
+		<table class="section-table">
+			<thead>
+				<tr>
+					<th colspan="5">SUIVI IMAGERIE</th>
+				</tr>
+				<tr>
+					<th scope="col" id="col-images-emr-1" class="section-emr">EMR</th>
+					<th scope="col" id="col-images-view" class="view-row">View</th>
+					<th scope="col" id="col-images-type">Le type d’image</th>
+					<th scope="col" id="col-images-date">Date</th>
+					<th scope="col" id="col-images-outcome">Interpretation</th>
+				</tr>
+			</thead>
+			<tbody>
+			    <c:set var="shownImages" value=""/>
+				<c:forEach var="image" items="${formData.obsMapper.imagesPedi}">
+					<tr <c:if test="${not image.emr}">class="empty-row"</c:if>>
+						<td class="section-emr"><c:if test="${image.emr}">&#x2713;</c:if></td>
+						<td class="view-row" align="center">
+							<c:if test="${image.encounter != null}">
+							<a href="javascript:void(0)" onClick="showEntryAppendPopup('Image', ${formData.imageFormId}, ${image.encounter.encounterId}); return false;">
+								<img src="${pageContext.request.contextPath}/images/file.gif" title="<spring:message code="general.view"/>" border="0" align="top" />
+							</a>
+							<c:set var="shownImages" value="${shownImages},${image.encounter.encounterId}"/>
+							</c:if>
+						</td>
+						<td>
+							<jsp:useBean id="image" type="org.openmrs.module.mch.mapper.ImagePedi" />
+							<%= UIHelper.getCheckBoxWidget(image.isChestXRay(), "Cliche Thorax") %> 
+							<%= UIHelper.getCheckBoxWidget(image.isAbdominalUltrasound(), "Echo Adbominale") %> 
+							<%= UIHelper.getCheckBoxWidget(image.isOther(), "Autre (spécifier):") %>
+							<c:if test="${image.emr}"><span class="value-data">${image.imageTypeString}</span></c:if>
+						</td>
+						<td>
+							<span class="value-date"><c:choose><c:when test="${image.emr}"><openmrs:formatDate date="${image.obsDate}" format="${FormatDate_General}"/></c:when><c:otherwise>${DateTextPlaceHolder}</c:otherwise></c:choose></span>
+						</td>
+						<td>
+							<span class="value-data">
+								<c:if test="${image.comments != null}">
+									<c:forEach var="comment" items="${image.comments}" varStatus="status">
+									    <c:if test="${status.index > 0}"> | </c:if>
+									 	<openmrs:format obsValue="${comment}"/> 
+									</c:forEach>
+								</c:if>
+							</span>
+						</td>
+					</tr>
+				</c:forEach>
+				<tr class="new-item-button-row">
+					<td/>
+					<td colspan="4">
+						<button onClick="showEntryPopup('New Image', ${formData.imageFormId}); return false;">Nouveau</button>
+					<!-- 	<c:if test="${!empty formData.encounterTypeEncs}">
+						&nbsp;&nbsp;&nbsp;
+							ajouter à encounter/append to encounter: 
+				            <select class="encounterSelect" onMouseUp="if ($j(this).val() != 0){showEntryAppendPopup('Image', ${formData.imageFormId}, $j(this).val())}">
+							<option value="0"></option>
+							<c:forEach var="enc" items="${formData.encounterTypeEncs}">
+							    <c:if test="${fn:contains(shownImages, enc.encounterId) == false}">
+								<option value="${enc.encounterId}">
+									<openmrs:formatDate date="${enc.encounterDatetime}" format="dd/MM/yyyy"/> / ${enc.provider.familyName} ${enc.provider.givenName} / (${enc.location})
+								</option>	
+								</c:if>
+							</c:forEach>
+							</select>
+						</c:if>	 -->
+					</td>
+				</tr>
+			</tbody>
+		</table>
+</div>
